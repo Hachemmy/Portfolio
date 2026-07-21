@@ -37,3 +37,12 @@
     transform: rotate(360deg);
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 80px;
+  /* adapte selon la hauteur de ton header */
+}
