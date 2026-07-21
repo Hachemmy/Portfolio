@@ -237,7 +237,7 @@ export const formations = [
         titre: "Licence Professionnelle I en Informatique",
         etablissement: 'ESSGAM (Mahajanga)',
     },
-    { periode: 'novembre 2024', titre: "DELF (Diplôme d'études en langue française)", etablissement: 'Alliance Française (Mahajanga)', niveau: 'B' },
+    { periode: 'novembre 2024', titre: "DELF (Diplôme d'études en langue française)", etablissement: 'Alliance Française (Mahajanga)', niveau: 'Niveau B2' },
     {
         periode: 'janvier 2025 — novembre 2025',
         titre: 'Licence Professionnelle I',
