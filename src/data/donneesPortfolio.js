@@ -41,7 +41,7 @@ export const pointsFortAccueil = [
 export const elementsAPropos = [
     {
         titre: 'Profil',
-        corps: 'RAZAFINTIAMASY Hachemmy Jovenno. ',
+        corps: 'RAZAFINTIAMASY Hachemmy Jovenno. Nationalité Malagasy.',
         icone: FaUserAstronaut,
     },
     {
@@ -51,7 +51,7 @@ export const elementsAPropos = [
     },
     {
         titre: 'Objectifs',
-        corps: 'Des produits web fiables, esthétiques et efficaces.',
+        corps: 'Homme responsable, Travail bien fait, satisfaction du client et de l’employeur.',
         icone: FaRocket,
     },
     {
