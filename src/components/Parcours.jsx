@@ -57,8 +57,8 @@ function Parcours() {
                                         transition={{ duration: 0.55, delay: index * 0.08, ease: 'easeOut' }}
                                         className={`relative flex flex-col sm:flex-row ${index % 2 === 0 ? 'sm:justify-start' : 'sm:justify-end'}`}
                                     >
-                                        <div className="w-full sm:w-[calc(50%-1.5rem)] ml-0 sm:ml-12 max-w-xl rounded-[1.5rem] border border-slate-800/80 bg-slate-900/70 p-7 shadow-[0_0_40px_rgba(59,130,246,0.06)]">
-                                            <div className="absolute left-4 sm:left-1/2 top-6 h-5 w-5 rounded-full border-4 border-sky-400 bg-slate-950 sm:-translate-x-1/2" />
+                                        <div className="w-full sm:w-[calc(50%-1.5rem)] ml-0 sm:ml-12 max-w-xl rounded-[1.5rem] border border-slate-800/80 bg-slate-900/70 p-7 pl-10 shadow-[0_0_40px_rgba(59,130,246,0.06)]">
+                                            <div className="absolute left-2 sm:left-1/2 top-6 h-5 w-5 rounded-full border-4 border-sky-400 bg-slate-950 sm:-translate-x-1/2" />
                                             <p className="text-sm font-semibold uppercase tracking-[0.25em] text-sky-400">{element.periode || element.date}</p>
                                             <h3 className="mt-3 text-xl font-semibold text-slate-50">{element.titre || element.poste}</h3>
                                             <p className="mt-2 text-sm font-medium text-slate-300">{element.entreprise || element.structure}</p>
