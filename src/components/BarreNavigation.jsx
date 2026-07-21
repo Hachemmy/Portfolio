@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaArrowRight, FaBars, FaTimes } from 'react-icons/fa';
@@ -18,12 +17,21 @@ function BarreNavigation() {
         return () => window.removeEventListener('scroll', gererDefilement);
     }, []);
 
+    const variants = {
+        open: { height: 'fit-content', opacity: 1 },
+        closed: { height: 0, opacity: 0 }
+    };
+
     return (
         <header
-            className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${estDefile ? 'bg-slate-950/80 backdrop-blur-xl' : 'bg-transparent'}`}
+            className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${estDefile ? 'bg-slate-950/80 backdrop-blur-xl' : 'bg-transparent'
+                }`}
         >
             <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-                <a href="#accueil" className="flex items-center gap-3 text-lg font-semibold tracking-[0.3em] text-slate-50">
+                <a
+                    href="#accueil"
+                    className="flex items-center gap-3 text-lg font-semibold tracking-[0.3em] text-slate-50"
+                >
                     <span className="flex h-15 w-15 items-center justify-center rounded-full border border-sky-400/40 bg-sky-500/10 text-sky-300">
                         <img
                             src={process.env.PUBLIC_URL + '/assets/Hachemmy.jpg'}
@@ -34,6 +42,7 @@ function BarreNavigation() {
                     <span className="hidden sm:inline">HACHEMMY</span>
                 </a>
 
+                {/* Menu desktop */}
                 <nav className="hidden items-center gap-8 lg:flex">
                     {liensNavigation.map((lien) => (
                         <a
@@ -46,6 +55,7 @@ function BarreNavigation() {
                     ))}
                 </nav>
 
+                {/* Bouton CV desktop */}
                 <a
                     href={lienCV}
                     download="CVHachemmy.pdf"
@@ -56,6 +66,7 @@ function BarreNavigation() {
                     Télécharger CV <FaArrowRight />
                 </a>
 
+                {/* Bouton menu mobile */}
                 <button
                     type="button"
                     onClick={() => setMenuMobileOuvert((precedent) => !precedent)}
@@ -66,17 +77,20 @@ function BarreNavigation() {
                 </button>
             </div>
 
+            {/* Menu mobile */}
             <motion.div
-                initial={false}
-                animate={{ height: menuMobileOuvert ? 'auto' : 0, opacity: menuMobileOuvert ? 1 : 0 }}
-                className="overflow-hidden border-t border-slate-800/80 bg-slate-950/95 lg:hidden"
+                initial="closed"
+                animate={menuMobileOuvert ? 'open' : 'closed'}
+                variants={variants}
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden border-t border-slate-800/80 bg-slate-950/95 z-50 lg:hidden"
             >
                 <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-4">
                     {liensNavigation.map((lien) => (
                         <a
                             key={lien.label}
                             href={lien.href}
-                            className="rounded-2xl px-3 py-2 text-sm text-slate-300 transition hover:bg-slate-900 hover:text-sky-300"
+                            className="block w-full rounded-2xl px-3 py-2 text-sm text-slate-300 transition hover:bg-slate-900 hover:text-sky-300"
                             onClick={() => setMenuMobileOuvert(false)}
                         >
                             {lien.label}
@@ -99,4 +113,3 @@ function BarreNavigation() {
 }
 
 export default BarreNavigation;
-
