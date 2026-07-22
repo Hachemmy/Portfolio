@@ -14,7 +14,7 @@ function Parcours() {
                 />
 
                 <div className="mt-16 relative mx-auto max-w-4xl">
-                    <div className="absolute left-4 top-0 h-full w-px bg-slate-800 sm:left-1/2 sm:-translate-x-1/2" />
+                    <div className="absolute left-4 top-0 inset-y-0 w-px bg-slate-800 sm:left-1/2 sm:-translate-x-1/2" />
                     <div className="space-y-10">
                         {(experiencesProfessionnelles && experiencesProfessionnelles.length > 0 ? experiencesProfessionnelles : parcours).map((element, index) => (
                             <motion.div
