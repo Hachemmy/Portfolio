@@ -187,31 +187,17 @@ export const experiencesProfessionnelles = [
         details: '3ème place — participation au challenge frontend.',
     },
     {
+        date: 'Mai 2025',
+        poste: 'JavaScript (JS)',
+        structure: "École Nationale d'Informatique (E.N.I.)",
+        details:
+            'Dynamisme Page Web',
+    },
+    {
         date: 'juin 2025',
         poste: 'Développeur Front-end',
         structure: 'DevHunt 5.0 (E.N.I.)',
         details: 'Contribution aux interfaces',
-    },
-    {
-        date: 'Juillet 2025',
-        poste: 'Projets React.js',
-        structure: "École Nationale d'Informatique (E.N.I.)",
-        details:
-            ' Monitoring de stockage ',
-    },
-    {
-        date: 'Mai 2026',
-        poste: 'RIP/OSPF',
-        structure: "École Nationale d'Informatique (E.N.I.)",
-        details:
-            'Routage réseau ',
-    },
-    {
-        date: 'Avril 2026',
-        poste: 'PHP/MySQL',
-        structure: "École Nationale d'Informatique (E.N.I.)",
-        details:
-            'Système de messagerie ',
     },
     {
         date: 'Novembre 2025',
@@ -221,12 +207,27 @@ export const experiencesProfessionnelles = [
             'Système de freinage automatique',
     },
     {
-        date: 'Mai 2025',
-        poste: 'JavaScript (JS)',
+        date: 'Avril 2026',
+        poste: 'PHP/MySQL',
         structure: "École Nationale d'Informatique (E.N.I.)",
         details:
-            'Dynamisme Page Web',
+            'Système de messagerie ',
     },
+    {
+        date: 'Mai 2026',
+        poste: 'RIP/OSPF',
+        structure: "École Nationale d'Informatique (E.N.I.)",
+        details:
+            'Routage réseau ',
+    },
+    {
+        date: 'Juillet 2026',
+        poste: 'Projets React.js',
+        structure: "École Nationale d'Informatique (E.N.I.)",
+        details:
+            ' Monitoring de stockage ',
+    },
+
 
 ];
 
