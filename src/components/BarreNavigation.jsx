@@ -67,7 +67,9 @@ function BarreNavigation() {
                             className="h-8 w-8 rounded-full object-cover sm:h-10 sm:w-10"
                         />
                     </span>
-                    <span className="hidden sm:inline">HACHEMMY</span>
+                    <span className="text-sm font-semibold tracking-[0.15em] text-slate-50 sm:text-base sm:tracking-[0.3em]">
+                        HACHEMMY
+                    </span>
                 </a>
 
                 <nav className="hidden items-center gap-6 lg:flex lg:gap-8">
