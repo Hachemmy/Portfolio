@@ -33,3 +33,9 @@ body {
   background: rgba(96, 165, 250, 0.35);
   color: #f8fafc;
 }
+
+/* Empeche que la navbar fixed cache le haut de chaque section
+   quand on scrolle vers une ancre (#parcours, #contact, etc.) */
+section {
+  scroll-margin-top: 100px;
+}

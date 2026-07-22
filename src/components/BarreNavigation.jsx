@@ -27,6 +27,23 @@ function BarreNavigation() {
         };
     }, [menuMobileOuvert]);
 
+    // Gere le clic sur un lien du menu mobile : ferme le menu, reactive le
+    // scroll du body, PUIS scrolle vers la section une fois l'animation de
+    // fermeture terminee. On evite ainsi le conflit ou le navigateur tente
+    // un saut natif pendant que le scroll est encore bloque (overflow: hidden).
+    const gererClicLienMobile = (href) => (evenement) => {
+        evenement.preventDefault();
+        setMenuMobileOuvert(false);
+        document.body.style.overflow = '';
+
+        window.setTimeout(() => {
+            const cible = document.querySelector(href);
+            if (cible) {
+                cible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }, 320); // legerement > duree de l'animation de fermeture (0.3s)
+    };
+
     const variants = {
         open: { height: 'auto', opacity: 1 },
         closed: { height: 0, opacity: 0 }
@@ -100,7 +117,7 @@ function BarreNavigation() {
                             key={lien.label}
                             href={lien.href}
                             className="block w-full rounded-2xl px-3 py-3 text-sm text-slate-300 transition hover:bg-slate-900 hover:text-sky-300"
-                            onClick={() => setMenuMobileOuvert(false)}
+                            onClick={gererClicLienMobile(lien.href)}
                         >
                             {lien.label}
                         </a>
@@ -111,7 +128,10 @@ function BarreNavigation() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="mt-2 flex items-center justify-center gap-2 rounded-full border border-sky-400/40 bg-sky-500/10 px-4 py-3 text-sm font-medium text-sky-300"
-                        onClick={() => setMenuMobileOuvert(false)}
+                        onClick={() => {
+                            setMenuMobileOuvert(false);
+                            document.body.style.overflow = '';
+                        }}
                     >
                         Télécharger CV <FaArrowRight />
                     </a>
