@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import BarreNavigation from './components/BarreNavigation';
 import Accueil from './components/Accueil';
@@ -22,6 +21,41 @@ function Application() {
     return () => window.cancelAnimationFrame(identifiant);
   }, []);
 
+  useEffect(() => {
+    // Si l'URL contient une ancre (#parcours, #contact, etc.), on scrolle
+    // manuellement vers la section correspondante une fois que tous les
+    // composants ont fini d'être montés dans le DOM. Nécessaire car le
+    // navigateur tente son propre scroll natif AVANT que React n'ait
+    // rendu le contenu, ce qui échoue silencieusement (ex: lien partagé
+    // sur les réseaux sociaux, ouverture directe de l'URL avec ancre).
+    const hash = window.location.hash;
+    if (!hash) return;
+
+    const tenterScroll = () => {
+      const cible = document.querySelector(hash);
+      if (cible) {
+        cible.scrollIntoView({ behavior: 'auto', block: 'start' });
+        return true;
+      }
+      return false;
+    };
+
+    // Essaie tout de suite, puis réessaie à quelques reprises au cas où
+    // certains composants (images, animations) mettent un peu plus de
+    // temps à s'afficher et à définir leur hauteur finale.
+    let tentatives = 0;
+    const maxTentatives = 10;
+    const intervalle = setInterval(() => {
+      tentatives += 1;
+      const reussi = tenterScroll();
+      if (reussi || tentatives >= maxTentatives) {
+        clearInterval(intervalle);
+      }
+    }, 100);
+
+    return () => clearInterval(intervalle);
+  }, []);
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">
       <ProgressionDefilement />
@@ -41,4 +75,3 @@ function Application() {
 }
 
 export default Application;
-
