@@ -166,7 +166,7 @@ export const detailsContact = [
 ];
 
 export const personalInfo = {
-    nom: 'Mr Hachemmy J. RAZAFINTIAMASY',
+    nom: 'Hachemmy J. RAZAFINTIAMASY',
     titre: 'Administrateur Systèmes & Réseaux | Développeur Full Stack',
     photo:
         'https://modele-cv.com/app/uploads/doc-builder-v2/photos/Hachemmy_1784555302_0fBfBbje.JPG',
