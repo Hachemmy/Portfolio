@@ -137,7 +137,7 @@ export const projets = [
     },
     {
         titre: 'Tic Tac Toe',
-        image: 'https://image.thum.io/get/width/900/https://hachemmy.github.io/TIK-TAK-TOE-by-Hachemmy/',
+        image: process.env.PUBLIC_URL + '/images/TicTacToe.png',
         description: 'Jeu de Morpion interactif avec modes Joueur vs Joueur et Joueur vs Bot, incluant plusieurs niveaux de difficulté (Facile, Moyen, Difficile).',
         technologies: ['HTML5', 'CSS3', 'JavaScript'],
         github: 'https://github.com/Hachemmy/TIK-TAK-TOE-by-Hachemmy',
