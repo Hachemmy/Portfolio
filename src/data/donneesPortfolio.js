@@ -135,6 +135,15 @@ export const projets = [
         github: 'https://github.com/Hachemmy/portfolio',
         demo: 'https://portfolio-hachemmy.vercel.app',
     },
+    {
+        titre: 'Tic Tac Toe',
+        image: 'https://image.thum.io/get/width/900/https://hachemmy.github.io/TIK-TAK-TOE-by-Hachemmy/',
+        description: 'Jeu de Morpion interactif avec modes Joueur vs Joueur et Joueur vs Bot, incluant plusieurs niveaux de difficulté (Facile, Moyen, Difficile).',
+        technologies: ['HTML5', 'CSS3', 'JavaScript'],
+        github: 'https://github.com/Hachemmy/TIK-TAK-TOE-by-Hachemmy',
+        demo: 'https://hachemmy.github.io/TIK-TAK-TOE-by-Hachemmy/',
+    },
+
 
 ];
 
