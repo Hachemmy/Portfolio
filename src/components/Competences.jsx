@@ -42,7 +42,7 @@ const ICONES = {
     'Cisco Packet Tracer': SiCisco,
     Wireshark: SiWireshark,
     VirtualBox: SiVirtualbox,
-    Tinkercad: FaMicrochip,
+    Tinkercard: FaMicrochip,
     Git: SiGit,
     GitHub: SiGithub,
 };
