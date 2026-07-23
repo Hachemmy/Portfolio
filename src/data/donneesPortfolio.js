@@ -103,7 +103,7 @@ export const projets = [
         titre: 'Storage Manager',
         image:
             'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fstorage-manager-sigma.vercel.app?w=900',
-        description: 'Application React de monitoring de stockage simulé avec une interface moderne et responsive.',
+        description: 'Application React de monitoring de stockage simulé avec une interface moderne et responsive. Login:hachejoven@gmail.com Password:PROJETREACT',
         technologies: ['React', 'Tailwind', 'Material UI',],
         github: 'https://github.com/Hachemmy/Storage-Manager',
         demo: 'https://storage-manager-sigma.vercel.app',
