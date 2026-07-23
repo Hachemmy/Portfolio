@@ -35,14 +35,15 @@ function Parcours() {
 
                     <div
                         className="
-                        absolute 
-                        inset-y-0 
-                        left-4 
-                        w-px 
-                        bg-slate-800
-                        sm:left-1/2
-                        sm:-translate-x-1/2
-                        "
+            absolute
+            inset-y-0
+            left-4
+            w-px
+            bg-slate-300
+            dark:bg-slate-800
+            sm:left-1/2
+            sm:-translate-x-1/2
+        "
                     />
 
 
@@ -90,18 +91,22 @@ function Parcours() {
 
                                 <div
                                     className="
-                                    ml-12
-                                    w-full
-                                    max-w-xl
-                                    rounded-[1.5rem]
-                                    border
-                                    border-slate-800/80
-                                    bg-slate-900/70
-                                    p-7
-                                    shadow-[0_0_40px_rgba(59,130,246,0.06)]
-                                    sm:ml-0
-                                    sm:w-[calc(50%_-_1.5rem)]
-                                    "
+    ml-12
+    w-full
+    max-w-xl
+    rounded-[1.5rem]
+    border
+    border-slate-200
+    bg-white
+    p-7
+    shadow-[0_0_40px_rgba(59,130,246,0.06)]
+
+    dark:border-slate-800/80
+    dark:bg-slate-900/70
+
+    sm:ml-0
+    sm:w-[calc(50%_-_1.5rem)]
+"
                                 >
 
 
@@ -116,7 +121,7 @@ function Parcours() {
                                         rounded-full
                                         border-4
                                         border-sky-400
-                                        bg-slate-950
+                                        bg-white dark:bg-slate-950
 
                                         sm:left-1/2
                                         sm:-translate-x-1/2
@@ -130,7 +135,7 @@ function Parcours() {
                                         font-semibold
                                         uppercase
                                         tracking-[0.25em]
-                                        text-sky-400
+                                        text-sky-600 dark:text-sky-400
                                         "
                                     >
                                         {
@@ -145,7 +150,7 @@ function Parcours() {
                                         mt-3
                                         text-xl
                                         font-semibold
-                                        text-slate-50
+                                        text-slate-900 dark:text-slate-50
                                         "
                                     >
                                         {
@@ -160,7 +165,7 @@ function Parcours() {
                                         mt-2
                                         text-sm
                                         font-medium
-                                        text-slate-300
+                                        text-slate-600 dark:text-slate-300
                                         "
                                     >
                                         {
@@ -175,7 +180,7 @@ function Parcours() {
                                         mt-4
                                         text-sm
                                         leading-7
-                                        text-slate-400
+                                        text-slate-600 dark:text-slate-400
                                         "
                                     >
                                         {
@@ -202,8 +207,7 @@ function Parcours() {
 
                 {
                     formations &&
-                    formations.length > 0 &&
-                    (
+                    formations.length > 0 && (
 
                         <div className="mt-24">
 
@@ -213,187 +217,165 @@ function Parcours() {
                                 description="Des bases théoriques renforcées par des certifications et des expériences complémentaires."
                             />
 
-
                             <div className="relative mx-auto mt-16 max-w-4xl">
-
 
                                 <div
                                     className="
-                                absolute
-                                inset-y-0
-                                left-4
-                                w-px
-                                bg-slate-800
-                                sm:left-1/2
-                                sm:-translate-x-1/2
-                                "
+                        absolute
+                        inset-y-0
+                        left-4
+                        w-px
+                        bg-slate-300
+                        dark:bg-slate-800
+                        sm:left-1/2
+                        sm:-translate-x-1/2
+                    "
                                 />
-
 
                                 <div className="space-y-10">
 
+                                    {formations.map((element, index) => (
 
-                                    {
-                                        formations.map(
-                                            (element, index) => (
+                                        <motion.div
+                                            key={element.titre || index}
+                                            initial={{ opacity: 0, y: 25 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: true, amount: 0.2 }}
+                                            transition={{
+                                                duration: 0.5,
+                                                delay: index * 0.08
+                                            }}
+                                            className={`
+                                relative flex
+                                ${index % 2 === 0
+                                                    ? 'sm:justify-start'
+                                                    : 'sm:justify-end'
+                                                }
+                            `}
+                                        >
 
-                                                <motion.div
+                                            <div
+                                                className="
+                                    ml-12
+                                    w-full
+                                    max-w-xl
+                                    rounded-[1.5rem]
+                                    border
+                                    border-slate-200
+                                    bg-white
+                                    p-7
+                                    shadow-[0_0_40px_rgba(59,130,246,0.06)]
 
-                                                    key={
-                                                        element.titre ||
-                                                        index
-                                                    }
+                                    dark:border-slate-800/80
+                                    dark:bg-slate-900/70
 
-                                                    initial={{
-                                                        opacity: 0,
-                                                        y: 25
-                                                    }}
+                                    sm:ml-0
+                                    sm:w-[calc(50%_-_1.5rem)]
+                                "
+                                            >
 
-                                                    whileInView={{
-                                                        opacity: 1,
-                                                        y: 0
-                                                    }}
+                                                <div
+                                                    className="
+                                        absolute
+                                        left-2
+                                        top-6
+                                        h-5
+                                        w-5
+                                        rounded-full
+                                        border-4
+                                        border-emerald-400
+                                        bg-white
 
-                                                    viewport={{
-                                                        once: true,
-                                                        amount: 0.2
-                                                    }}
+                                        dark:bg-slate-950
 
-                                                    transition={{
-                                                        duration: 0.5,
-                                                        delay: index * 0.08
-                                                    }}
+                                        sm:left-1/2
+                                        sm:-translate-x-1/2
+                                    "
+                                                />
 
-                                                    className={`
-                                            relative flex
-                                            ${index % 2 === 0
-                                                            ? 'sm:justify-start'
-                                                            : 'sm:justify-end'
-                                                        }
-                                        `}
+                                                <p
+                                                    className="
+                                        text-sm
+                                        font-semibold
+                                        uppercase
+                                        tracking-[0.25em]
+                                        text-emerald-600
+
+                                        dark:text-emerald-400
+                                    "
                                                 >
+                                                    {element.periode}
+                                                </p>
 
+                                                <h3
+                                                    className="
+                                        mt-3
+                                        text-xl
+                                        font-semibold
+                                        text-slate-900
 
-                                                    <div
+                                        dark:text-slate-50
+                                    "
+                                                >
+                                                    {element.titre}
+                                                </h3>
+
+                                                <p
+                                                    className="
+                                        mt-2
+                                        text-sm
+                                        font-medium
+                                        text-slate-600
+
+                                        dark:text-slate-300
+                                    "
+                                                >
+                                                    {element.etablissement}
+                                                </p>
+
+                                                {(element.mention || element.niveau) && (
+
+                                                    <p
                                                         className="
-                                            ml-12
-                                            w-full
-                                            max-w-xl
-                                            rounded-[1.5rem]
-                                            border
-                                            border-slate-800/80
-                                            bg-slate-900/70
-                                            p-7
-                                            sm:ml-0
-                                            sm:w-[calc(50%_-_1.5rem)]
-                                            "
+                                            mt-2
+                                            text-sm
+                                            font-medium
+                                            text-emerald-600
+
+                                            dark:text-emerald-300
+                                        "
                                                     >
+                                                        {element.mention || element.niveau}
+                                                    </p>
 
+                                                )}
 
-                                                        <div
-                                                            className="
-                                                absolute
-                                                left-2
-                                                top-6
-                                                h-5
-                                                w-5
-                                                rounded-full
-                                                border-4
-                                                border-emerald-400
-                                                bg-slate-950
+                                                {element.details && (
 
-                                                sm:left-1/2
-                                                sm:-translate-x-1/2
-                                                "
-                                                        />
+                                                    <p
+                                                        className="
+                                            mt-4
+                                            text-sm
+                                            leading-7
+                                            text-slate-600
 
+                                            dark:text-slate-400
+                                        "
+                                                    >
+                                                        {element.details}
+                                                    </p>
 
-                                                        <p
-                                                            className="
-                                                text-sm
-                                                font-semibold
-                                                uppercase
-                                                tracking-[0.25em]
-                                                text-emerald-400
-                                                "
-                                                        >
-                                                            {element.periode}
-                                                        </p>
+                                                )}
 
+                                            </div>
 
-                                                        <h3
-                                                            className="
-                                                mt-3
-                                                text-xl
-                                                font-semibold
-                                                text-slate-50
-                                                "
-                                                        >
-                                                            {element.titre}
-                                                        </h3>
+                                        </motion.div>
 
-
-                                                        <p
-                                                            className="
-                                                mt-2
-                                                text-sm
-                                                font-medium
-                                                text-slate-300
-                                                "
-                                                        >
-                                                            {element.etablissement}
-                                                        </p>
-
-
-                                                        {
-                                                            (element.mention ||
-                                                                element.niveau) &&
-
-                                                            <p
-                                                                className="
-                                                    mt-2
-                                                    text-sm
-                                                    font-medium
-                                                    text-emerald-300
-                                                    "
-                                                            >
-                                                                {
-                                                                    element.mention ||
-                                                                    element.niveau
-                                                                }
-                                                            </p>
-                                                        }
-
-
-                                                        {
-                                                            element.details &&
-
-                                                            <p
-                                                                className="
-                                                    mt-4
-                                                    text-sm
-                                                    leading-7
-                                                    text-slate-400
-                                                    "
-                                                            >
-                                                                {element.details}
-                                                            </p>
-                                                        }
-
-
-                                                    </div>
-
-
-                                                </motion.div>
-
-                                            ))
-                                    }
-
+                                    ))}
 
                                 </div>
 
                             </div>
-
 
                         </div>
 

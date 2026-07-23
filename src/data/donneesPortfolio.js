@@ -96,14 +96,14 @@ export const projets = [
             'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmessagerie.infinityfree.me%2F?w=900',
         description: 'Système de messagerie web complet avec PHP et MySQL, offrant une interface utilisateur intuitive et des fonctionnalités de communication sécurisées.',
         technologies: ['PHP', 'HTML', 'CSS', 'SQL', 'JavaScript'],
-        github: 'https://hachemmy.github.io/messagerie/',
+        github: 'https://github.com/Hachemmy/messagerie/',
         demo: 'https://messagerie.infinityfree.me/',
     },
     {
-        titre: 'Technologie JavaScript',
+        titre: 'Storage Manager',
         image:
             'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fstorage-manager-sigma.vercel.app?w=900',
-        description: 'Monitoring de stockage en simulation (React.js). ',
+        description: 'Application React de monitoring de stockage simulé avec une interface moderne et responsive.',
         technologies: ['React', 'Tailwind', 'Material UI',],
         github: 'https://github.com/Hachemmy/Storage-Manager',
         demo: 'https://storage-manager-sigma.vercel.app',
@@ -117,7 +117,6 @@ export const projets = [
         github: 'https://github.com/Hachemmy/Quiz-Madagascar-de-Hachemmy',
         demo: 'https://hachemmy.github.io/Quiz-Madagascar-de-Hachemmy/',
     },
-
     {
         titre: 'Routage IP',
         image: process.env.PUBLIC_URL + '/images/RoutageIP.png',
@@ -126,9 +125,16 @@ export const projets = [
         technologies: ['RIP', 'OSPF', 'GNS3', 'Wireshark'],
         github: 'https://github.com/Hachemmy/RoutageIP/',
         demo: '/assets/RoutageIP.gns3',
-        telechargement: true,
+        telecharger: true,
     },
-
+    {
+        titre: 'Portfolio Personnel',
+        image: 'https://image.thum.io/get/width/900/https://portfolio-hachemmy.vercel.app',
+        description: 'Site vitrine personnel présentant mon profil, mes compétences et mes projets, conçu avec une interface moderne et responsive.',
+        technologies: ['React', 'JavaScript', 'CSS', 'Tailwind CSS', 'Framer Motion'],
+        github: 'https://github.com/Hachemmy/portfolio',
+        demo: 'https://portfolio-hachemmy.vercel.app',
+    },
 
 ];
 
@@ -160,8 +166,8 @@ export const detailsContact = [
 ];
 
 export const personalInfo = {
-    nom: 'Monsieur Hachemmy',
-    titre: 'Administrateur Système et Réseau & Développeur Web',
+    nom: 'Hachemmy J. RAZAFINTIAMASY',
+    titre: 'Administrateur Systèmes & Réseaux | Développeur Full Stack',
     photo:
         'https://modele-cv.com/app/uploads/doc-builder-v2/photos/Hachemmy_1784555302_0fBfBbje.JPG',
     aPropos:

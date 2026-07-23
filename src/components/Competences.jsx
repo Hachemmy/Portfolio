@@ -56,48 +56,52 @@ function getIcone(nom) {
 // et on fait varier l'opacité/la luminosité pour distinguer les niveaux.
 const INTENSITE_NIVEAU = {
     4: {
-        bordureCarte: 'border-sky-400/40',
-        fondCarte: 'bg-sky-500/[0.07]',
-        badgeTexte: 'text-sky-200',
-        badgeFond: 'bg-sky-500/20',
+        bordureCarte: 'border-sky-400/40 dark:border-sky-400/40',
+        fondCarte: 'bg-sky-500/[0.05] dark:bg-sky-500/[0.07]',
+        badgeTexte: 'text-sky-600 dark:text-sky-200',
+        badgeFond: 'bg-sky-500/10 dark:bg-sky-500/20',
         badgeBordure: 'border-sky-400/40',
-        icone: 'text-sky-200',
+        icone: 'text-sky-500 dark:text-sky-200',
         point: 'bg-sky-300',
     },
+
     3: {
         bordureCarte: 'border-sky-400/25',
-        fondCarte: 'bg-sky-500/[0.05]',
-        badgeTexte: 'text-sky-300',
-        badgeFond: 'bg-sky-500/15',
+        fondCarte: 'bg-sky-500/[0.04] dark:bg-sky-500/[0.05]',
+        badgeTexte: 'text-sky-600 dark:text-sky-300',
+        badgeFond: 'bg-sky-500/10 dark:bg-sky-500/15',
         badgeBordure: 'border-sky-400/30',
-        icone: 'text-sky-300',
+        icone: 'text-sky-500 dark:text-sky-300',
         point: 'bg-sky-400',
     },
+
     2: {
-        bordureCarte: 'border-slate-700/70',
-        fondCarte: 'bg-slate-900/60',
-        badgeTexte: 'text-sky-400',
+        bordureCarte: 'border-slate-200 dark:border-slate-700/70',
+        fondCarte: 'bg-white dark:bg-slate-900/60',
+        badgeTexte: 'text-sky-600 dark:text-sky-400',
         badgeFond: 'bg-sky-500/10',
         badgeBordure: 'border-sky-400/20',
-        icone: 'text-sky-400',
+        icone: 'text-sky-500 dark:text-sky-400',
         point: 'bg-sky-500',
     },
+
     reseau: {
-        bordureCarte: 'border-slate-800/80',
-        fondCarte: 'bg-slate-900/70',
-        badgeTexte: 'text-sky-300',
+        bordureCarte: 'border-slate-200 dark:border-slate-800/80',
+        fondCarte: 'bg-white dark:bg-slate-900/70',
+        badgeTexte: 'text-sky-600 dark:text-sky-300',
         badgeFond: 'bg-sky-500/10',
         badgeBordure: 'border-sky-400/20',
-        icone: 'text-sky-300',
+        icone: 'text-sky-500 dark:text-sky-300',
         point: 'bg-sky-400',
     },
+
     outils: {
-        bordureCarte: 'border-slate-800/80',
-        fondCarte: 'bg-slate-900/70',
-        badgeTexte: 'text-sky-300',
+        bordureCarte: 'border-slate-200 dark:border-slate-800/80',
+        fondCarte: 'bg-white dark:bg-slate-900/70',
+        badgeTexte: 'text-sky-600 dark:text-sky-300',
         badgeFond: 'bg-sky-500/10',
         badgeBordure: 'border-sky-400/20',
-        icone: 'text-sky-300',
+        icone: 'text-sky-500 dark:text-sky-300',
         point: 'bg-sky-400',
     },
 };
@@ -107,7 +111,7 @@ const sectionsCompetences = (() => {
         return [
             {
                 titre: 'Langages de programmation',
-                elements: ['HTML', 'CSS', 'JavaScript', 'PHP', 'C', 'C++', 'Java', 'Python', 'React.js', 'Tailwind CSS'],
+                elements: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'C', 'C++', 'Java', 'Python', 'React.js'],
                 niveau: null,
                 cle: 'reseau',
             },
@@ -149,7 +153,8 @@ function IndicateurNiveau({ niveau, style }) {
             {Array.from({ length: 4 }).map((_, i) => (
                 <span
                     key={i}
-                    className={`h-[6px] w-[6px] rounded-full ${i < niveau ? style.point : 'bg-slate-600/50'}`}
+                    className={`h-[6px] w-[6px] rounded-full ${i < niveau ? style.point : 'bg-slate-300 dark:bg-slate-600/50'
+                        }`}
                 />
             ))}
         </span>
@@ -180,7 +185,7 @@ function Competences() {
                                 className={`rounded-[2rem] border p-9 shadow-[0_0_40px_rgba(59,130,246,0.05)] lg:p-10 ${style.bordureCarte} ${style.fondCarte} ${section.titre === 'Outils' ? 'lg:col-span-2' : ''}`}
                             >
                                 <div className="flex items-center justify-between">
-                                    <h3 className="text-2xl font-semibold text-slate-50 lg:text-3xl">{section.titre}</h3>
+                                    <h3 className="text-2xl font-semibold text-slate-900 dark:text-slate-50 lg:text-3xl">{section.titre}</h3>
                                     {section.niveau && (
                                         <span
                                             className={`rounded-full border px-4 py-1.5 text-sm font-medium ${style.badgeTexte} ${style.badgeFond} ${style.badgeBordure}`}
@@ -196,7 +201,7 @@ function Competences() {
                                         return (
                                             <span
                                                 key={element}
-                                                className="inline-flex items-center gap-2.5 text-base text-slate-200"
+                                                className="inline-flex items-center gap-2.5 text-base text-slate-700 dark:text-slate-200"
                                             >
                                                 <Icon className={`h-5 w-5 shrink-0 ${style.icone}`} />
                                                 {element}

@@ -9,6 +9,7 @@ import Contact from './components/Contact';
 import PiedDePage from './components/PiedDePage';
 import ProgressionDefilement from './components/ProgressionDefilement';
 import RetourEnHaut from './components/RetourEnHaut';
+import { ThemeProvider } from './context/ThemeContext';
 
 function Application() {
   useEffect(() => {
@@ -57,20 +58,22 @@ function Application() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-50">
-      <ProgressionDefilement />
-      <BarreNavigation />
-      <main className="relative overflow-x-hidden">
-        <Accueil />
-        <APropos />
-        <Competences />
-        <Projets />
-        <Parcours />
-        <Contact />
-      </main>
-      <PiedDePage />
-      <RetourEnHaut />
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen bg-white text-slate-900 transition-colors duration-500 dark:bg-slate-950 dark:text-slate-50">
+        <ProgressionDefilement />
+        <BarreNavigation />
+        <main className="relative overflow-x-hidden">
+          <Accueil />
+          <APropos />
+          <Competences />
+          <Projets />
+          <Parcours />
+          <Contact />
+        </main>
+        <PiedDePage />
+        <RetourEnHaut />
+      </div>
+    </ThemeProvider>
   );
 }
 

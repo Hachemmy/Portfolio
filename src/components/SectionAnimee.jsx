@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 
 function SectionAnimee({ id: identifiant, children: enfants, className: classe = '' }) {
@@ -17,4 +16,3 @@ function SectionAnimee({ id: identifiant, children: enfants, className: classe =
 }
 
 export default SectionAnimee;
-
