@@ -118,6 +118,14 @@ export const projets = [
         demo: 'https://hachemmy.github.io/Quiz-Madagascar-de-Hachemmy/',
     },
     {
+        titre: 'Tic Tac Toe',
+        image: process.env.PUBLIC_URL + '/images/TicTacToe.png',
+        description: 'Jeu de Morpion interactif avec modes Joueur vs Joueur et Joueur vs Bot, incluant plusieurs niveaux de difficulté (Facile, Moyen, Difficile).',
+        technologies: ['HTML5', 'CSS3', 'JavaScript'],
+        github: 'https://github.com/Hachemmy/TIK-TAK-TOE-by-Hachemmy',
+        demo: 'https://hachemmy.github.io/TIK-TAK-TOE-by-Hachemmy/',
+    },
+    {
         titre: 'Routage IP',
         image: process.env.PUBLIC_URL + '/images/RoutageIP.png',
         description:
@@ -135,14 +143,7 @@ export const projets = [
         github: 'https://github.com/Hachemmy/portfolio',
         demo: 'https://portfolio-hachemmy.vercel.app',
     },
-    {
-        titre: 'Tic Tac Toe',
-        image: process.env.PUBLIC_URL + '/images/TicTacToe.png',
-        description: 'Jeu de Morpion interactif avec modes Joueur vs Joueur et Joueur vs Bot, incluant plusieurs niveaux de difficulté (Facile, Moyen, Difficile).',
-        technologies: ['HTML5', 'CSS3', 'JavaScript'],
-        github: 'https://github.com/Hachemmy/TIK-TAK-TOE-by-Hachemmy',
-        demo: 'https://hachemmy.github.io/TIK-TAK-TOE-by-Hachemmy/',
-    },
+
 
 
 ];
