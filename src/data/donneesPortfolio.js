@@ -144,6 +144,15 @@ export const projets = [
         demo: 'https://portfolio-hachemmy.vercel.app',
     },
 
+    {
+        titre: 'Flemart',
+        image: 'https://image.thum.io/get/width/900/https://github.com/Hachemmy/Flemart',
+        description: "Flem'Art est une application web de gestion et de partage de projets de programmation avec des fonctionnalités sociales, d'apprentissage et de motivation.(référencé depuis le dépôt GitHub).",
+        technologies: ['React.js ', 'TypeScript', 'Tailwind CSS', 'Express.js', 'MySQL', 'JWT', 'REST API'],
+        github: 'https://github.com/Hachemmy/Flemart',
+        demo: 'https://github.com/Hachemmy/Flemart',
+    },
+
 
 
 ];
