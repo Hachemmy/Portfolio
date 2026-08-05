@@ -146,7 +146,7 @@ export const projets = [
 
     {
         titre: "Flem'art",
-        image: 'https://image.thum.io/get/width/900/https://flemart-frontend.onrender.com',
+        image: process.env.PUBLIC_URL + '/assets/flemart.png',
         description: "Flem'Art est une application web de gestion et de partage de projets de programmation avec des fonctionnalités sociales, d'apprentissage et de motivation.",
         technologies: ['React.js ', 'TypeScript', 'Tailwind CSS', 'Express.js', 'MySQL', 'JWT', 'REST API'],
         github: 'https://github.com/Hachemmy/Flemart',
