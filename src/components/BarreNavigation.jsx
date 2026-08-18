@@ -73,7 +73,7 @@ function BarreNavigation() {
                         />
                     </span>
                     <span className="text-sm font-semibold tracking-[0.15em] text-slate-900 dark:text-slate-50 sm:text-base sm:tracking-[0.3em]">
-                        HACHEMMY
+                        Mr HACHEMMY
                     </span>
                 </a>
 
