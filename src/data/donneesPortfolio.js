@@ -205,7 +205,7 @@ export const competencesDetaillees = {
     tresBien: ['HTML5', 'CSS3', 'C'],
     bien: ['JavaScript', 'PHP', 'SQL', 'C++', 'Shell', 'Tailwind CSS'],
     notion: ['Python', 'C#', 'Java'],
-    reseau: ['TCP/IP', 'VLAN', 'Routage (RIP/OSPF)'],
+    reseau: ['TCP/IP', 'VLAN', 'Routage (RIP/OSPF)', 'DNS', 'LDAP', 'DHCP', 'APACHE2/NGINX', 'MAIL'],
 };
 
 export const langues = ['Malagasy', 'Français', 'Anglais', 'Deutsch'];
