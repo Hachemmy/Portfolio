@@ -7,6 +7,8 @@ import {
     FaNetworkWired,
     FaRocket,
     FaUserAstronaut,
+    FaRobot,
+    FaTerminal,
 } from 'react-icons/fa';
 import {
     SiHtml5,
@@ -21,6 +23,8 @@ import {
     SiLinux,
     SiArduino,
     SiCisco,
+    SiCanva,
+    SiDocker,
 } from 'react-icons/si';
 
 export const liensNavigation = [
@@ -87,6 +91,10 @@ export const competences = [
     { nom: 'ESP32', icone: FaMicrochip, description: 'Connectivité IoT et firmware' },
     { nom: 'MQTT', icone: FaNetworkWired, description: 'Communication machine-to-machine' },
     { nom: 'Cisco', icone: SiCisco, description: 'Réseaux et protocoles' },
+    { nom: 'Canva', icone: SiCanva, description: 'Design graphique et création visuelle' },
+    { nom: 'Docker', icone: SiDocker, description: 'Conteneurisation et déploiement' },
+    { nom: 'ChatGPT', icone: FaRobot, description: 'Assistance IA et productivité' },
+    { nom: 'Opencode', icone: FaTerminal, description: 'Développement assisté par IA' },
 ];
 
 export const projets = [
