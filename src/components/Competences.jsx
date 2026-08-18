@@ -20,7 +20,7 @@ import {
     SiGithub,
 } from 'react-icons/si';
 import { FaCode, FaTerminal, FaJava, FaNetworkWired, FaSitemap, FaRoute, FaMicrochip, FaRobot, FaPaintBrush } from 'react-icons/fa';
-import { SiDocker } from 'react-icons/si';
+import { SiDocker, SiTailwindcss } from 'react-icons/si';
 
 // --- Association nom exact -> logo ---
 const ICONES = {
@@ -36,6 +36,7 @@ const ICONES = {
     'C#': SiSharp,
     Java: FaJava,
     'React.js': SiReact,
+    'Tailwind CSS': SiTailwindcss,
     'TCP/IP': FaNetworkWired,
     VLAN: FaSitemap,
     'Routage (RIP/OSPF)': FaRoute,

@@ -203,7 +203,7 @@ export const personalInfo = {
 
 export const competencesDetaillees = {
     tresBien: ['HTML5', 'CSS3', 'C'],
-    bien: ['JavaScript', 'PHP', 'SQL', 'C++', 'Shell'],
+    bien: ['JavaScript', 'PHP', 'SQL', 'C++', 'Shell', 'Tailwind CSS'],
     notion: ['Python', 'C#', 'Java'],
     reseau: ['TCP/IP', 'VLAN', 'Routage (RIP/OSPF)'],
 };
