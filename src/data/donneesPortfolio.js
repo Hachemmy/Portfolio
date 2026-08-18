@@ -254,6 +254,13 @@ export const experiencesProfessionnelles = [
     },
     {
         date: 'Juillet 2026',
+        poste: 'Devhunt MegaEvent 2026',
+        structure: "École Nationale d'Informatique (E.N.I.)",
+        details:
+            ' Compétition interne à l\'E.N.I., ouverte à tous les niveaux, organisée pendant le MegaEvent 2026.',
+    },
+    {
+        date: 'Juillet 2026',
         poste: 'Hackhunt (CTF)',
         structure: "École Nationale d'Informatique (E.N.I.)",
         details:
