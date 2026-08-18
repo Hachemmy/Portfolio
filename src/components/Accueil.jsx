@@ -105,18 +105,17 @@ function Accueil() {
                     initial={{ opacity: 0, x: 30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, ease: 'easeOut', delay: 0.1 }}
-                    className="relative mx-auto w-full max-w-xl"
+                    className="relative mx-auto w-full max-w-[280px] sm:max-w-[360px] lg:max-w-xl"
                 >
 
-                    <div className="absolute inset-0 -translate-x-4 translate-y-4 rounded-[2rem] bg-sky-500/20 blur-3xl" />
+                    <div className="absolute inset-0 -translate-x-2 translate-y-2 rounded-[2rem] bg-sky-500/20 blur-3xl sm:-translate-x-4 sm:translate-y-4" />
 
-                    <div className="absolute inset-0 w-[500px] rounded-[2rem] border border-sky-400/20" />
-
+                    <div className="absolute inset-0 rounded-[2rem] border border-sky-400/20" />
 
                     <img
                         src={personalInfo.photo || process.env.PUBLIC_URL + '/assets/Hachemmy.jpg'}
                         alt={personalInfo.nom}
-                        className="relative h-[500px] w-[500px] rounded-[2rem] object-cover shadow-[0_0_100px_rgba(59,130,246,0.15)]"
+                        className="relative w-full rounded-[2rem] object-cover shadow-[0_0_60px_rgba(59,130,246,0.15)] sm:shadow-[0_0_100px_rgba(59,130,246,0.15)]"
                     />
 
                 </motion.div>
