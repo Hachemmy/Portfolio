@@ -255,7 +255,7 @@ export const experiencesProfessionnelles = [
     {
         date: 'Juillet 2026',
         poste: 'Hackhunt (CTF)',
-        structure: 'E.N.I.',
+        structure: "École Nationale d'Informatique (E.N.I.)",
         details:
             'Certifié — Compétition interne à l\'E.N.I., ouverte à tous les niveaux, organisée pendant le MegaEvent 2026.',
     },
