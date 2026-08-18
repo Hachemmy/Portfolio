@@ -252,8 +252,20 @@ export const experiencesProfessionnelles = [
         details:
             ' Monitoring de stockage ',
     },
-
-
+    {
+        date: 'Juillet 2026',
+        poste: 'Hackhunt (CTF)',
+        structure: 'E.N.I.',
+        details:
+            'Certifié — Compétition interne à l\'E.N.I., ouverte à tous les niveaux, organisée pendant le MegaEvent 2026.',
+    },
+    {
+        date: 'Août 2026',
+        poste: 'CTF de STARPWN',
+        structure: 'STARPWN',
+        details:
+            'Compétition Capture The Flag internationale, totalement en ligne.',
+    },
 ];
 
 export const formations = [
