@@ -19,7 +19,8 @@ import {
     SiGit,
     SiGithub,
 } from 'react-icons/si';
-import { FaCode, FaTerminal, FaJava, FaNetworkWired, FaSitemap, FaRoute, FaMicrochip } from 'react-icons/fa';
+import { FaCode, FaTerminal, FaJava, FaNetworkWired, FaSitemap, FaRoute, FaMicrochip, FaRobot } from 'react-icons/fa';
+import { SiCanva, SiDocker } from 'react-icons/si';
 
 // --- Association nom exact -> logo ---
 const ICONES = {
@@ -45,6 +46,10 @@ const ICONES = {
     Tinkercard: FaMicrochip,
     Git: SiGit,
     GitHub: SiGithub,
+    Canva: SiCanva,
+    Docker: SiDocker,
+    ChatGPT: FaRobot,
+    Opencode: FaTerminal,
 };
 
 function getIcone(nom) {
@@ -138,7 +143,7 @@ const sectionsCompetences = (() => {
         { titre: 'Réseau', elements: competencesDetaillees.reseau, niveau: null, cle: 'reseau' },
         {
             titre: 'Outils',
-            elements: ['GNS3', 'Cisco Packet Tracer', 'Wireshark', 'VirtualBox', 'Tinkercad', 'Git', 'GitHub'],
+            elements: ['GNS3', 'Cisco Packet Tracer', 'Wireshark', 'VirtualBox', 'Tinkercad', 'Git', 'GitHub', 'Docker', 'Canva', 'ChatGPT', 'Opencode'],
             niveau: null,
             cle: 'outils',
         },
