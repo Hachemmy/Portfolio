@@ -19,8 +19,8 @@ import {
     SiGit,
     SiGithub,
 } from 'react-icons/si';
-import { FaCode, FaTerminal, FaJava, FaNetworkWired, FaSitemap, FaRoute, FaMicrochip, FaRobot } from 'react-icons/fa';
-import { SiCanva, SiDocker } from 'react-icons/si';
+import { FaCode, FaTerminal, FaJava, FaNetworkWired, FaSitemap, FaRoute, FaMicrochip, FaRobot, FaPaintBrush } from 'react-icons/fa';
+import { SiDocker } from 'react-icons/si';
 
 // --- Association nom exact -> logo ---
 const ICONES = {
@@ -46,7 +46,7 @@ const ICONES = {
     Tinkercard: FaMicrochip,
     Git: SiGit,
     GitHub: SiGithub,
-    Canva: SiCanva,
+    Canva: FaPaintBrush,
     Docker: SiDocker,
     ChatGPT: FaRobot,
     Opencode: FaTerminal,
