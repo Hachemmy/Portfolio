@@ -164,7 +164,7 @@ export const projets = [
         titre: 'CapJobHelp',
         image: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fcapjobhelp.infinityfree.me%2F?w=900',
         description: 'Plateforme web CapJobHelp dédiée à l’accompagnement et à l’aide dans les démarches liées à la recherche d’emploi pour les personnes handicapées.',
-        technologies: ['PHP', 'CSS', 'JavaScript'],
+        technologies: ['PHP', 'HTML', 'CSS', 'SQL', 'JavaScript'],
         demo: 'https://capjobhelp.infinityfree.me/',
         github: 'https://github.com/Hachemmy/CapJob-Help'
     },
