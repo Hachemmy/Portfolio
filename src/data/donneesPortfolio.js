@@ -127,7 +127,7 @@ export const projets = [
     },
     {
         titre: 'Tic Tac Toe',
-        image: process.env.PUBLIC_URL + '/images/TicTacToe.png',
+        image: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fhachemmy.github.io%2FTIK-TAK-TOE-by-Hachemmy%2F?w=900',
         description: 'Jeu de Morpion interactif avec modes Joueur vs Joueur et Joueur vs Bot, incluant plusieurs niveaux de difficulté (Facile, Moyen, Difficile).',
         technologies: ['HTML5', 'CSS3', 'JavaScript'],
         github: 'https://github.com/Hachemmy/TIK-TAK-TOE-by-Hachemmy',
@@ -145,7 +145,7 @@ export const projets = [
     },
     {
         titre: 'Portfolio Personnel',
-        image: 'https://image.thum.io/get/width/900/https://portfolio-hachemmy.vercel.app',
+        image: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fportfolio-hachemmy.vercel.app?w=900',
         description: 'Site vitrine personnel présentant mon profil, mes compétences et mes projets, conçu avec une interface moderne et responsive.',
         technologies: ['React', 'JavaScript', 'CSS', 'Tailwind CSS', 'Framer Motion'],
         github: 'https://github.com/Hachemmy/portfolio',
@@ -154,7 +154,7 @@ export const projets = [
 
     {
         titre: "Flem'art",
-        image: process.env.PUBLIC_URL + '/assets/flemart.png',
+        image: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fflemart-frontend.onrender.com?w=900',
         description: "Flem'Art est une application web de gestion et de partage de projets de programmation avec des fonctionnalités sociales, d'apprentissage et de motivation.",
         technologies: ['React.js ', 'TypeScript', 'Tailwind CSS', 'Express.js', 'MySQL', 'JWT', 'REST API'],
         github: 'https://github.com/Hachemmy/Flemart',
