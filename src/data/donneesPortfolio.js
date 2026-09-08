@@ -160,6 +160,13 @@ export const projets = [
         github: 'https://github.com/Hachemmy/Flemart',
         demo: 'https://flemart-frontend.onrender.com',
     },
+    {
+        titre: 'CapJobHelp',
+        image: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fcapjobhelp.infinityfree.me%2F?w=900',
+        description: 'Plateforme web CapJobHelp dédiée à l’accompagnement et à l’aide dans les démarches liées à la recherche d’emploi.',
+        technologies: ['HTML', 'CSS', 'JavaScript'],
+        demo: 'https://capjobhelp.infinityfree.me/',
+    },
 
 
 

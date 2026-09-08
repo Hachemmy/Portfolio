@@ -62,26 +62,28 @@ function Projets() {
                                         {projet.titre}
                                     </h3>
 
-                                    <a
-                                        href={projet.github}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="
-                                            rounded-full
-                                            border border-slate-300
-                                            p-3
-                                            text-slate-700
-                                            transition
-                                            hover:border-sky-400
-                                            hover:text-sky-500
+                                    {projet.github && (
+                                        <a
+                                            href={projet.github}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="
+                                                rounded-full
+                                                border border-slate-300
+                                                p-3
+                                                text-slate-700
+                                                transition
+                                                hover:border-sky-400
+                                                hover:text-sky-500
 
-                                            dark:border-slate-800
-                                            dark:text-slate-300
-                                            dark:hover:text-sky-300
-                                        "
-                                    >
-                                        <FaGithub />
-                                    </a>
+                                                dark:border-slate-800
+                                                dark:text-slate-300
+                                                dark:hover:text-sky-300
+                                            "
+                                        >
+                                            <FaGithub />
+                                        </a>
+                                    )}
 
                                 </div>
 
