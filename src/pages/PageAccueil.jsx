@@ -24,7 +24,7 @@ function PageAccueil() {
             {/* Fond HC.png fixe, continu sur toute la page avant le footer */}
             <div className="pointer-events-none absolute inset-0 z-0">
                 <div
-                    className="absolute inset-0 bg-cover bg-[50%_20%] bg-scroll opacity-[0.22] lg:bg-fixed"
+                    className="absolute inset-0 bg-contain bg-[50%_15%] bg-no-repeat bg-scroll opacity-[0.22] lg:bg-fixed"
                     style={{
                         backgroundImage: `url(${process.env.PUBLIC_URL}/assets/HC.png)`,
                     }}
