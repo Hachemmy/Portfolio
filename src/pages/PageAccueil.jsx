@@ -25,12 +25,21 @@ function PageAccueil() {
             {/* Fond mobile : photo visible au niveau du prénom et de la signature */}
             <div className="pointer-events-none absolute inset-0 z-0 lg:hidden">
                 <div
-                    className="absolute inset-0 opacity-[0.22]"
+                    className="absolute inset-0 opacity-[0.3]"
                     style={{
-                        backgroundImage: `url(${process.env.PUBLIC_URL}/assets/HC.png), url(${process.env.PUBLIC_URL}/assets/HC.png)`,
-                        backgroundSize: 'contain, contain',
-                        backgroundRepeat: 'no-repeat, no-repeat',
-                        backgroundPosition: '50% 4%, 50% 43%',
+                        backgroundImage: `url(${process.env.PUBLIC_URL}/assets/HC.png)`,
+                        backgroundSize: 'contain',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: '50% 4%',
+                    }}
+                />
+                <div
+                    className="absolute inset-0 opacity-[0.3]"
+                    style={{
+                        backgroundImage: `url(${process.env.PUBLIC_URL}/assets/HC.png)`,
+                        backgroundSize: 'contain',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: '50% 43%',
                     }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black" />
