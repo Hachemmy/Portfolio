@@ -29,7 +29,7 @@ function Disposition() {
             <DeplacerVersHaut />
             <ProgressionDefilement />
             <BarreNavigation />
-            <main className="relative overflow-x-hidden">
+            <main className="relative overflow-x-clip">
                 <Outlet />
             </main>
             <PiedDePage />
