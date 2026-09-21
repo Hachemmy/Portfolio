@@ -5,174 +5,167 @@ import SectionAnimee from './SectionAnimee';
 import TitreSection from './TitreSection';
 
 function Projets() {
+    const titresVedettes = ['Storage Manager', "Flem'art", 'Routage IP'];
+    const projetsVedettes = titresVedettes
+        .map((titre) => projets.find((projet) => projet.titre === titre))
+        .filter(Boolean);
+
     return (
         <SectionAnimee
             id="projets"
-            className="px-6 pt-16 pb-24 lg:px-8 lg:pt-20"
+            className="relative px-6 pt-16 pb-32 lg:px-8 lg:pt-20"
         >
-            <div className="mx-auto max-w-7xl">
+            <div className="halo-blu -right-56 top-0 h-[36rem] w-[36rem] opacity-50" />
 
-                <TitreSection
-                    etiquette="Projets"
-                    titre="Des réalisations à la fois techniques et visuellement raffinées"
-                    description="Chaque projet reflète une approche soignée du détail, du responsive et de l’expérience utilisateur."
-                />
+            <div className="relative mx-auto max-w-[1480px]">
 
-                <div className="mt-16 grid gap-8 lg:grid-cols-2">
+                {/* ——— Bandeau "Top collections" : grille des projets ——— */}
+                <div className="flex flex-col items-center justify-between gap-6 sm:flex-row sm:items-end">
+                    <TitreSection
+                        etiquette="Projets"
+                        titre="Mes réalisations, techniques et visuellement raffinées"
+                        description="Chaque projet reflète une approche soignée du détail, du responsive et de l’expérience utilisateur."
+                    />
 
+                    <a
+                        href="https://github.com/Hachemmy/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="shrink-0 text-lg font-medium text-brand transition hover:text-white"
+                    >
+                        Voir plus sur GitHub →
+                    </a>
+                </div>
+
+                <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     {projets.map((projet, index) => (
-
                         <motion.article
                             key={projet.titre}
-                            initial={{ opacity: 0, y: 24 }}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.2 }}
-                            transition={{
-                                duration: 0.55,
-                                delay: index * 0.07,
-                                ease: 'easeOut'
-                            }}
-                            whileHover={{
-                                y: -8,
-                                scale: 1.01
-                            }}
-                            className="
-                                overflow-hidden
-                                rounded-[2rem]
-                                border border-slate-200
-                                bg-white
-                                shadow-[0_0_50px_rgba(59,130,246,0.08)]
-
-                                dark:border-slate-800/80
-                                dark:bg-slate-900/70
-                            "
+                            transition={{ duration: 0.5, delay: index * 0.05, ease: 'easeOut' }}
+                            whileHover={{ y: -6 }}
+                            className="group cursor-pointer carte-verre overflow-hidden"
                         >
-
-                            <img
-                                src={projet.image}
-                                alt={projet.titre}
-                                className="h-56 w-full object-cover"
-                            />
-
-                            <div className="p-7">
-
-                                <div className="flex items-center justify-between">
-
-                                    <h3 className="text-2xl font-semibold text-slate-900 dark:text-slate-50">
-                                        {projet.titre}
-                                    </h3>
-
-                                    {projet.github && (
-                                        <a
-                                            href={projet.github}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className="
-                                                rounded-full
-                                                border border-slate-300
-                                                p-3
-                                                text-slate-700
-                                                transition
-                                                hover:border-sky-400
-                                                hover:text-sky-500
-
-                                                dark:border-slate-800
-                                                dark:text-slate-300
-                                                dark:hover:text-sky-300
-                                            "
+                            <div className="relative">
+                                <img
+                                    src={projet.image}
+                                    alt={projet.titre}
+                                    className="h-44 w-full object-cover"
+                                />
+                                <span className="absolute left-4 top-4 flex max-w-[calc(100%-2rem)] flex-wrap gap-1.5">
+                                    {projet.technologies.map((tech) => (
+                                        <span
+                                            key={tech}
+                                            className="rounded-[60px] border border-brand/50 bg-black px-3 py-1 text-[11px] font-medium text-white"
                                         >
-                                            <FaGithub />
-                                        </a>
-                                    )}
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </span>
+                                <div className="absolute inset-0 bg-black/30 opacity-0 transition group-hover:opacity-100" />
+                            </div>
 
-                                </div>
-
-                                <p className="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-400">
+                            <div className="p-5">
+                                <h3 className="text-lg font-bold leading-tight tracking-[-0.02em] text-white">
+                                    {projet.titre}
+                                </h3>
+                                <p className="mt-2 line-clamp-2 text-sm leading-6 text-white/60">
                                     {projet.description}
                                 </p>
 
-                                <div className="mt-5 flex flex-wrap gap-2">
-
-                                    {projet.technologies.map((technologie) => (
-
-                                        <span
-                                            key={technologie}
-                                            className="
-                                                rounded-full
-                                                border border-sky-400/20
-                                                bg-sky-500/10
-                                                px-3
-                                                py-1
-                                                text-sm
-                                                text-sky-600
-
-                                                dark:text-sky-300
-                                            "
-                                        >
-                                            {technologie}
-                                        </span>
-
-                                    ))}
-
-                                </div>
-
-                                {projet.telecharger ? (
-
+                                <div className="mt-4 flex items-center gap-2">
                                     <a
-                                        href={projet.demo}
-                                        download
-                                        className="
-                                            mt-7
-                                            inline-flex
-                                            items-center
-                                            gap-2
-                                            text-sm
-                                            font-semibold
-                                            text-sky-600
-                                            transition
-                                            hover:text-sky-700
-
-                                            dark:text-sky-300
-                                            dark:hover:text-sky-200
-                                        "
+                                        href={projet.github}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-white/80 transition hover:border-brand/50 hover:text-brand"
                                     >
-                                        Télécharger le projet
-                                        <FaArrowRight />
+                                        <FaGithub className="text-sm" /> GitHub
                                     </a>
-
-                                ) : (
-
                                     <a
                                         href={projet.demo}
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="
-                                            mt-7
-                                            inline-flex
-                                            items-center
-                                            gap-2
-                                            text-sm
-                                            font-semibold
-                                            text-sky-600
-                                            transition
-                                            hover:text-sky-700
-
-                                            dark:text-sky-300
-                                            dark:hover:text-sky-200
-                                        "
+                                        className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-brand/40 bg-brand/10 px-3 py-2 text-xs font-medium text-brand transition hover:border-brand/70 hover:bg-brand/20"
                                     >
-                                        Voir la démo
-                                        <FaArrowRight />
+                                        <FaArrowRight className="text-sm" />
+                                        {projet.telecharger ? 'Télécharger' : 'Voir la démo'}
                                     </a>
-
-                                )}
-
+                                </div>
                             </div>
-
                         </motion.article>
-
                     ))}
+                </div>
 
+                {/* ——— Bandeau "Marketplace" : projets sélectionnés ——— */}
+                <div className="mt-32">
+                    <TitreSection
+                        etiquette="Sélection"
+                        titre="Mes plus grands projets"
+                        description="Trois projets dans le détail"
+                    />
+
+                    <div className="mt-16 grid gap-8 lg:grid-cols-3">
+                        {projetsVedettes.map((projet, index) => (
+                            <motion.article
+                                key={projet.titre}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true, amount: 0.2 }}
+                                transition={{ duration: 0.6, delay: index * 0.12, ease: 'easeOut' }}
+                                whileHover={{ y: -8 }}
+                                className="carte-verre-forte rounded-[60px] p-4"
+                            >
+                                <img
+                                    src={projet.image}
+                                    alt={projet.titre}
+                                    className="h-60 w-full rounded-[40px] object-cover"
+                                />
+
+                                <div className="p-5 pb-3">
+                                    <h3 className="text-2xl font-bold tracking-[-0.04em] text-white">
+                                        {projet.titre}
+                                    </h3>
+                                </div>
+
+                                <p className="px-5 pb-5 text-sm leading-6 text-white/60">
+                                    {projet.description}
+                                </p>
+
+                                <div className="px-5 pb-5 flex items-center gap-3">
+                                    <a
+                                        href={projet.github}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="inline-flex flex-1 items-center justify-center gap-2 rounded-[60px] border border-white/10 bg-white/5 px-6 py-4 text-sm font-medium text-white/80 transition hover:border-brand/50 hover:text-brand"
+                                    >
+                                        <FaGithub /> GitHub
+                                    </a>
+                                    <a
+                                        href={projet.demo}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="inline-flex flex-1 items-center justify-center gap-2 rounded-[60px] border border-brand/40 bg-brand/10 px-6 py-4 text-sm font-medium text-brand transition hover:border-brand/70 hover:bg-brand/20"
+                                    >
+                                        <FaArrowRight /> {projet.telecharger ? 'Télécharger' : 'Voir la démo'}
+                                    </a>
+                                </div>
+                            </motion.article>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="mt-20 flex items-center justify-center">
+                    <a
+                        href="https://github.com/Hachemmy/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full border border-brand/40 bg-brand/10 px-8 py-4 text-base font-medium text-brand transition hover:border-brand/70 hover:bg-brand/20"
+                    >
+                        <FaGithub /> Tous mes dépôts
+                    </a>
                 </div>
 
             </div>

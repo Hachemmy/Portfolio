@@ -1,234 +1,117 @@
-
 import { motion } from 'framer-motion';
 import SectionAnimee from './SectionAnimee';
 import TitreSection from './TitreSection';
+import BandeauTechnologies from './BandeauTechnologies';
+import iconesCompetences from './iconesCompetences';
 import { competencesDetaillees } from '../data/donneesPortfolio';
-import {
-    SiHtml5,
-    SiCss,
-    SiJavascript,
-    SiPhp,
-    SiCplusplus,
-    SiPython,
-    SiSharp,
-    SiMysql,
-    SiReact,
-    SiCisco,
-    SiWireshark,
-    SiVirtualbox,
-    SiGit,
-    SiGithub,
-} from 'react-icons/si';
-import { FaCode, FaTerminal, FaJava, FaNetworkWired, FaSitemap, FaRoute, FaMicrochip, FaRobot, FaPaintBrush } from 'react-icons/fa';
-import { SiDocker, SiTailwindcss } from 'react-icons/si';
 
-// --- Association nom exact -> logo ---
-const ICONES = {
-    HTML5: SiHtml5,
-    CSS3: SiCss,
-    C: FaCode,
-    JavaScript: SiJavascript,
-    PHP: SiPhp,
-    SQL: SiMysql,
-    'C++': SiCplusplus,
-    Shell: FaTerminal,
-    Python: SiPython,
-    'C#': SiSharp,
-    Java: FaJava,
-    'React.js': SiReact,
-    'Tailwind CSS': SiTailwindcss,
-    'TCP/IP': FaNetworkWired,
-    VLAN: FaSitemap,
-    'Routage (RIP/OSPF)': FaRoute,
-    DNS: FaNetworkWired,
-    LDAP: FaNetworkWired,
-    DHCP: FaNetworkWired,
-    'APACHE2/NGINX': FaNetworkWired,
-    MAIL: FaNetworkWired,
-    GNS3: FaNetworkWired,
-    'Cisco Packet Tracer': SiCisco,
-    Wireshark: SiWireshark,
-    VirtualBox: SiVirtualbox,
-    Tinkercard: FaMicrochip,
-    Git: SiGit,
-    GitHub: SiGithub,
-    Canva: FaPaintBrush,
-    Docker: SiDocker,
-    ChatGPT: FaRobot,
-    Opencode: FaTerminal,
-};
-
-function getIcone(nom) {
-    return ICONES[nom] || FaCode;
-}
-
-// --- Intensité de l'accent "sky" (couleur de base du site) selon le niveau ---
-// On garde une seule teinte (sky) pour rester fidèle à la charte du site,
-// et on fait varier l'opacité/la luminosité pour distinguer les niveaux.
-const INTENSITE_NIVEAU = {
-    4: {
-        bordureCarte: 'border-sky-400/40 dark:border-sky-400/40',
-        fondCarte: 'bg-sky-500/[0.05] dark:bg-sky-500/[0.07]',
-        badgeTexte: 'text-sky-600 dark:text-sky-200',
-        badgeFond: 'bg-sky-500/10 dark:bg-sky-500/20',
-        badgeBordure: 'border-sky-400/40',
-        icone: 'text-sky-500 dark:text-sky-200',
-        point: 'bg-sky-300',
+const etapesCompetences = [
+    {
+        titre: 'Langages & Framework',
+        elements: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'SQL', 'C++', 'Shell', 'Python', 'C#', 'Java', 'React.js', 'Tailwind CSS'],
     },
-
-    3: {
-        bordureCarte: 'border-sky-400/25',
-        fondCarte: 'bg-sky-500/[0.04] dark:bg-sky-500/[0.05]',
-        badgeTexte: 'text-sky-600 dark:text-sky-300',
-        badgeFond: 'bg-sky-500/10 dark:bg-sky-500/15',
-        badgeBordure: 'border-sky-400/30',
-        icone: 'text-sky-500 dark:text-sky-300',
-        point: 'bg-sky-400',
+    {
+        titre: 'Réseau & Services',
+        elements: competencesDetaillees.reseau,
     },
-
-    2: {
-        bordureCarte: 'border-slate-200 dark:border-slate-700/70',
-        fondCarte: 'bg-white dark:bg-slate-900/60',
-        badgeTexte: 'text-sky-600 dark:text-sky-400',
-        badgeFond: 'bg-sky-500/10',
-        badgeBordure: 'border-sky-400/20',
-        icone: 'text-sky-500 dark:text-sky-400',
-        point: 'bg-sky-500',
+    {
+        titre: 'Outils, Systèmes & IoT',
+        elements: ['MySQL', 'Docker', 'Git', 'Linux', 'Arduino', 'Tinkercad', 'Windows', 'Wireshark', 'GNS3', 'Cisco Packet Tracer', 'VirtualBox', 'GitHub'],
     },
-
-    reseau: {
-        bordureCarte: 'border-slate-200 dark:border-slate-800/80',
-        fondCarte: 'bg-white dark:bg-slate-900/70',
-        badgeTexte: 'text-sky-600 dark:text-sky-300',
-        badgeFond: 'bg-sky-500/10',
-        badgeBordure: 'border-sky-400/20',
-        icone: 'text-sky-500 dark:text-sky-300',
-        point: 'bg-sky-400',
-    },
-
-    outils: {
-        bordureCarte: 'border-slate-200 dark:border-slate-800/80',
-        fondCarte: 'bg-white dark:bg-slate-900/70',
-        badgeTexte: 'text-sky-600 dark:text-sky-300',
-        badgeFond: 'bg-sky-500/10',
-        badgeBordure: 'border-sky-400/20',
-        icone: 'text-sky-500 dark:text-sky-300',
-        point: 'bg-sky-400',
-    },
-};
-
-const sectionsCompetences = (() => {
-    if (!competencesDetaillees) {
-        return [
-            {
-                titre: 'Langages de programmation',
-                elements: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'C', 'C++', 'Java', 'Python', 'React.js'],
-                niveau: null,
-                cle: 'reseau',
-            },
-            { titre: 'Base de données', elements: ['MySQL'], niveau: null, cle: 'reseau' },
-            {
-                titre: 'Systèmes d’exploitation',
-                elements: ['Windows : Serveur et Desktop', 'Linux : Ubuntu Server, Desktop et Distribution Debian'],
-                niveau: null,
-                cle: 'reseau',
-            },
-            {
-                titre: 'Outils',
-                elements: ['Tinkercad', 'Wireshark', 'GNS3', 'VirtualBox', 'Cisco Packet Tracer', 'Arduino', 'Git', 'GitHub'],
-                niveau: null,
-                cle: 'outils',
-            },
-        ];
-    }
-
-    return [
-        { titre: 'Très bien', elements: competencesDetaillees.tresBien, niveau: 4, cle: 4 },
-        { titre: 'Bien', elements: [...competencesDetaillees.bien, 'React.js'], niveau: 3, cle: 3 },
-        { titre: 'Notions', elements: competencesDetaillees.notion, niveau: 2, cle: 2 },
-        { titre: 'Réseau et Service', elements: competencesDetaillees.reseau, niveau: null, cle: 'reseau' },
-        {
-            titre: 'Outils',
-            elements: ['GNS3', 'Cisco Packet Tracer', 'Wireshark', 'VirtualBox', 'Tinkercad', 'Git', 'GitHub', 'Docker', 'Canva', 'ChatGPT', 'Opencode'],
-            niveau: null,
-            cle: 'outils',
-        },
-    ];
-})();
-
-// --- Petits points indiquant le niveau ---
-function IndicateurNiveau({ niveau, style }) {
-    if (!niveau) return null;
-    return (
-        <span className="ml-2 inline-flex items-center gap-1">
-            {Array.from({ length: 4 }).map((_, i) => (
-                <span
-                    key={i}
-                    className={`h-[6px] w-[6px] rounded-full ${i < niveau ? style.point : 'bg-slate-300 dark:bg-slate-600/50'
-                        }`}
-                />
-            ))}
-        </span>
-    );
-}
+];
 
 function Competences() {
     return (
-        <SectionAnimee id="competences" className="flex min-h-screen items-center px-6 pt-16 pb-24 lg:px-8 lg:pt-20">
-            <div className="mx-auto w-full max-w-7xl">
-                <TitreSection
-                    etiquette="Compétences"
-                    titre="Un socle technique solide, moderne et polyvalent"
-                    description="Je développe avec des technologies récentes, tout en gardant une approche claire, durable et orientée performance."
-                />
+        <SectionAnimee
+            id="competences"
+            className="relative px-6 pt-16 pb-32 lg:px-8 lg:pt-20"
+        >
+            <div className="halo-blu -left-52 top-1/4 h-[40rem] w-[40rem] opacity-50" />
 
-                <div className="mt-20 grid gap-8 lg:grid-cols-2">
-                    {sectionsCompetences.map((section, index) => {
-                        const style = INTENSITE_NIVEAU[section.cle];
-                        return (
-                            <motion.article
-                                key={section.titre}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, amount: 0.25 }}
-                                transition={{ duration: 0.45, delay: index * 0.04, ease: 'easeOut' }}
-                                whileHover={{ y: -6, scale: 1.01, borderColor: '#60A5FA' }}
-                                className={`rounded-[2rem] border p-9 shadow-[0_0_40px_rgba(59,130,246,0.05)] lg:p-10 ${style.bordureCarte} ${style.fondCarte} ${section.titre === 'Outils' ? 'lg:col-span-2' : ''}`}
-                            >
-                                <div className="flex items-center justify-between">
-                                    <h3 className="text-2xl font-semibold text-slate-900 dark:text-slate-50 lg:text-3xl">{section.titre}</h3>
-                                    {section.niveau && (
-                                        <span
-                                            className={`rounded-full border px-4 py-1.5 text-sm font-medium ${style.badgeTexte} ${style.badgeFond} ${style.badgeBordure}`}
-                                        >
-                                            Niveau {section.niveau}/4
-                                        </span>
-                                    )}
-                                </div>
+            <div className="relative mx-auto max-w-[1480px]">
 
-                                <div className="mt-7 flex flex-wrap gap-x-7 gap-y-4">
-                                    {section.elements.map((element) => {
-                                        const Icon = getIcone(element);
-                                        return (
-                                            <span
-                                                key={element}
-                                                className="inline-flex items-center gap-2.5 text-base text-slate-700 dark:text-slate-200"
-                                            >
-                                                <Icon className={`h-5 w-5 shrink-0 ${style.icone}`} />
-                                                {element}
-                                                <IndicateurNiveau niveau={section.niveau} style={style} />
-                                            </span>
-                                        );
-                                    })}
-                                </div>
-                            </motion.article>
-                        );
-                    })}
+                <div className="grid gap-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-24">
+
+                    {/* Colonne gauche : étapes numérotées */}
+                    <div>
+                        <TitreSection
+                            etiquette="Compétences"
+                            titre="Un socle technique solide, moderne et polyvalent"
+                            description="Je développe avec des technologies récentes, tout en gardant une approche claire, durable et orientée performance."
+                        />
+
+                        <div className="mt-16 space-y-12">
+                            {etapesCompetences.map((etape, index) => (
+                                <motion.div
+                                    key={etape.titre}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, amount: 0.25 }}
+                                    transition={{ duration: 0.5, delay: index * 0.08, ease: 'easeOut' }}
+                                    className="flex gap-8"
+                                >
+                                    <span className="nombre-contour shrink-0 text-6xl font-black leading-none tracking-[-0.04em] sm:text-7xl">
+                                        {String(index + 1).padStart(2, '0')}
+                                    </span>
+
+                                    <div className="border-t border-white/20 pt-6">
+                                        <h3 className="text-2xl font-bold tracking-[-0.04em] text-white sm:text-3xl">
+                                            {etape.titre}
+                                        </h3>
+
+                                        <div className="mt-5 flex flex-wrap gap-2.5">
+                                            {etape.elements.map((element) => {
+                                                const Icone = iconesCompetences[element];
+                                                return (
+                                                    <span
+                                                        key={element}
+                                                        className="inline-flex items-center gap-2 rounded-[40px] border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 transition hover:border-brand/50 hover:text-brand"
+                                                    >
+                                                        {Icone && <Icone className="text-sm text-brand" />}
+                                                        {element}
+                                                    </span>
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Colonne droite : grand portrait verre */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.8, ease: 'easeOut' }}
+                        className="relative flex h-full w-full flex-col"
+                    >
+                        <div className="halo-blu -inset-20 opacity-60" />
+
+                        <div className="carte-verre-forte relative flex rotate-2 flex-col rounded-[20px] p-4 transition-transform duration-500 hover:rotate-0">
+                            <img
+                                src={process.env.PUBLIC_URL + '/assets/HC.png'}
+                                alt="Portrait"
+                                className="w-full min-h-0 flex-1 rounded-[16px] object-cover"
+                            />
+                        </div>
+
+                        <div className="carte-verre-forte absolute bottom-10 left-4 rounded-lg px-6 py-3 sm:left-6">
+                            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand">
+                                Compétences
+                            </p>
+                        </div>
+                    </motion.div>
+
                 </div>
+
             </div>
+
+            {/* Bandeau défilant des technologies (façon partenaires NFTity) */}
+            <BandeauTechnologies />
         </SectionAnimee>
     );
 }
 
 export default Competences;
-

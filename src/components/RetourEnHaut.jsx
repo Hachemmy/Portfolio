@@ -19,7 +19,7 @@ function RetourEnHaut() {
             animate={{ opacity: estVisible ? 1 : 0, y: estVisible ? 0 : 20 }}
             transition={{ duration: 0.25 }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-sky-400/40 bg-slate-900/80 text-slate-100 shadow-[0_0_30px_rgba(59,130,246,0.2)] backdrop-blur-xl"
+            className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-brand/40 bg-black/70 text-white backdrop-blur-xl transition hover:text-brand"
             aria-label="Retour en haut"
         >
             <FaArrowUp />

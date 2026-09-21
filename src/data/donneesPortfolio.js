@@ -28,12 +28,12 @@ import {
 } from 'react-icons/si';
 
 export const liensNavigation = [
-    { label: 'Accueil', href: '#accueil' },
-    { label: 'À propos', href: '#a-propos' },
-    { label: 'Compétences', href: '#competences' },
-    { label: 'Projets', href: '#projets' },
-    { label: 'Expérience', href: '#parcours' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Accueil', route: '/' },
+    { label: 'À propos', route: '/a-propos' },
+    { label: 'Compétences', route: '/competences' },
+    { label: 'Projets', route: '/projets' },
+    { label: 'Expérience', route: '/parcours' },
+    { label: 'Contact', route: '/contact' },
 ];
 
 export const pointsFortAccueil = [
@@ -112,7 +112,7 @@ export const projets = [
         image:
             'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fstorage-manager-sigma.vercel.app?w=900',
         description: 'Application React de monitoring de stockage simulé avec une interface moderne et responsive. Login:hachejoven@gmail.com Password:PROJETREACT',
-        technologies: ['React', 'Tailwind', 'Material UI',],
+        technologies: ['React', 'Tailwind', 'Material UI'],
         github: 'https://github.com/Hachemmy/Storage-Manager',
         demo: 'https://storage-manager-sigma.vercel.app',
     },
@@ -121,7 +121,7 @@ export const projets = [
         image:
             'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fhachemmy.github.io%2FQuiz-Madagascar-de-Hachemmy%2F?w=900',
         description: 'Divetissement et apprentissage sur Madagascar avec un quiz interactif, responsive et animé.',
-        technologies: ['HTML5', 'CSS3', 'JavaScript',],
+        technologies: ['HTML5', 'CSS3', 'JavaScript'],
         github: 'https://github.com/Hachemmy/Quiz-Madagascar-de-Hachemmy',
         demo: 'https://hachemmy.github.io/Quiz-Madagascar-de-Hachemmy/',
     },
@@ -156,12 +156,12 @@ export const projets = [
         titre: "Flem'art",
         image: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fflemart-frontend.onrender.com?w=900',
         description: "Flem'Art est une application web de gestion et de partage de projets de programmation avec des fonctionnalités sociales, d'apprentissage et de motivation.",
-        technologies: ['React.js ', 'TypeScript', 'Tailwind CSS', 'Express.js', 'MySQL', 'JWT', 'REST API'],
+        technologies: ['React.js', 'TypeScript', 'Tailwind CSS', 'Express.js', 'MySQL', 'JWT', 'REST API'],
         github: 'https://github.com/Hachemmy/Flemart',
         demo: 'https://flemart-frontend.onrender.com',
     },
     {
-        titre: 'CapJobHelp',
+        titre: 'CapJob & Help',
         image: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fcapjobhelp.infinityfree.me%2F?w=900',
         description: 'Plateforme web CapJobHelp dédiée à l’accompagnement et à l’aide dans les démarches liées à la recherche d’emploi pour les personnes handicapées.',
         technologies: ['PHP', 'HTML', 'CSS', 'SQL', 'JavaScript'],

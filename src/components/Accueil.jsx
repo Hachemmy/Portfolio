@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { FaArrowRight, FaEnvelope, FaFacebook, FaGithub, FaLinkedin } from 'react-icons/fa';
-import { pointsFortAccueil, personalInfo, detailsContact } from '../data/donneesPortfolio';
+import { personalInfo, detailsContact } from '../data/donneesPortfolio';
 
 function Accueil() {
     const emailContact = detailsContact.find((d) => d.etiquette === 'Email')?.href || 'mailto:hachejoven@gmail.com';
@@ -12,114 +13,112 @@ function Accueil() {
         { icone: <FaEnvelope />, href: emailContact, etiquette: 'Email' },
     ];
 
+    const conteneurVariants = {
+        cache: { opacity: 1 },
+        visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.14, delayChildren: 0.15 },
+        },
+    };
+
+    const elementVariants = {
+        cache: { opacity: 0, y: 36, scale: 0.98 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+        },
+    };
+
     return (
-        <section id="accueil" className="relative overflow-hidden px-6 pb-24 pt-32 lg:px-8 lg:pb-32 lg:pt-40">
-            <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.2),_transparent_40%)]" />
+        <section id="accueil" className="relative overflow-hidden px-6 pb-32 pt-36 lg:px-8 lg:pb-40 lg:pt-44">
 
-            <div className="mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="halo-blu -left-44 top-16 h-[46rem] w-[46rem] opacity-70" />
+            <div className="halo-blu -right-56 top-1/4 h-[44rem] w-[44rem] opacity-60" />
 
+            <div className="relative mx-auto flex max-w-[900px] flex-col items-center text-center">
                 <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.7, ease: 'easeOut' }}
-                    className="max-w-2xl"
+                    variants={conteneurVariants}
+                    initial="cache"
+                    animate="visible"
                 >
-
-                    <p className="text-sm font-semibold uppercase tracking-[0.4em] text-sky-400">
+                    <motion.p
+                        variants={elementVariants}
+                        className="text-sm font-semibold uppercase tracking-[0.3em] text-brand"
+                    >
                         Bonjour, je suis
-                    </p>
+                    </motion.p>
 
-                    <h1 className="mt-5 text-4xl font-semibold leading-tight text-slate-900 dark:text-slate-50 sm:text-5xl lg:text-7xl">
-                        {personalInfo.nom}
-                    </h1>
+                    <motion.h1
+                        variants={elementVariants}
+                        className="mt-5 text-4xl font-bold leading-[1.1] tracking-[-0.04em] text-white sm:text-6xl sm:leading-[1.1] lg:text-[72px]"
+                    >
+                        Hachemmy Jovenno <span className="text-brand">RAZAFINTIAMASY</span>
+                    </motion.h1>
 
-                    <p className="mt-5 text-xl font-medium text-sky-600 dark:text-sky-300">
+                    <motion.p
+                        variants={elementVariants}
+                        className="mt-6 text-xl font-medium leading-8 text-brand sm:text-2xl"
+                    >
                         {personalInfo.titre}
-                    </p>
+                    </motion.p>
 
-                    <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-400">
+                    <motion.p
+                        variants={elementVariants}
+                        className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/70"
+                    >
                         {personalInfo.aPropos}
-                    </p>
+                    </motion.p>
 
-
-                    <div className="mt-8 flex flex-wrap gap-4">
-
-                        <a
-                            href="#projets"
-                            className="group inline-flex items-center gap-2 rounded-full bg-sky-500 px-6 py-3 font-medium text-slate-950 transition hover:scale-[1.02]"
+                    <motion.div
+                        variants={elementVariants}
+                        className="mt-10 flex flex-wrap justify-center gap-4"
+                    >
+                        <Link
+                            to="/projets"
+                            className="inline-flex items-center gap-2 rounded-full border border-brand/40 bg-brand/10 px-8 py-4 text-base font-medium text-brand transition hover:-translate-y-1 hover:border-brand/70 hover:bg-brand/20 sm:px-10 sm:py-5 sm:text-lg"
                         >
-                            Voir mes projets
-                            <FaArrowRight className="transition group-hover:translate-x-1" />
-                        </a>
+                            Voir mes projets <FaArrowRight />
+                        </Link>
 
-
-                        <a
-                            href="#contact"
-                            className="rounded-full border border-sky-400/40 bg-slate-100 px-6 py-3 font-medium text-slate-900 transition hover:border-sky-500 hover:text-sky-600 dark:bg-slate-900/70 dark:text-slate-100 dark:hover:border-sky-300 dark:hover:text-sky-300"
+                        <Link
+                            to="/contact"
+                            className="inline-flex items-center gap-2 rounded-full border border-white bg-white px-8 py-4 text-base font-medium text-black transition hover:-translate-y-1 hover:border-white/80 hover:bg-white/90 sm:px-10 sm:py-5 sm:text-lg"
                         >
                             Me contacter
-                        </a>
+                        </Link>
+                    </motion.div>
 
-                    </div>
-
-
-                    <div className="mt-8 flex flex-wrap gap-3">
-
-                        {reseauxSociaux.map((reseau) => (
-
-                            <a
+                    <motion.div
+                        variants={elementVariants}
+                        className="mt-10 flex flex-wrap justify-center gap-3"
+                    >
+                        {reseauxSociaux.map((reseau, index) => (
+                            <motion.a
                                 key={reseau.etiquette}
                                 href={reseau.href}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="flex h-12 w-12 items-center justify-center rounded-full border border-slate-300 bg-slate-100 text-slate-700 transition hover:-translate-y-1 hover:border-sky-400 hover:text-sky-500 dark:border-slate-800 dark:bg-slate-900/70 dark:text-slate-200 dark:hover:border-sky-400 dark:hover:text-sky-300"
                                 aria-label={reseau.etiquette}
+                                variants={elementVariants}
+                                animate={{
+                                    y: [0, -8, 0],
+                                    transition: {
+                                        duration: 3.2,
+                                        repeat: Infinity,
+                                        ease: 'easeInOut',
+                                        delay: 0.8 + index * 0.35,
+                                    },
+                                }}
+                                whileHover={{ scale: 1.15 }}
+                                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:border-brand/50 hover:text-brand"
                             >
                                 {reseau.icone}
-                            </a>
-
+                            </motion.a>
                         ))}
-
-                    </div>
-
-
-                    <div className="mt-10 flex flex-wrap gap-3">
-
-                        {pointsFortAccueil.map((pointFort) => (
-
-                            <span
-                                key={pointFort}
-                                className="rounded-full border border-sky-400/20 bg-sky-500/10 px-3 py-2 text-sm text-slate-700 dark:text-slate-300"
-                            >
-                                {pointFort}
-                            </span>
-
-                        ))}
-
-                    </div>
-
+                    </motion.div>
                 </motion.div>
-
-
-                <motion.div
-                    initial={{ opacity: 0, x: 30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, ease: 'easeOut', delay: 0.1 }}
-                    className="relative mx-auto w-full max-w-[280px] sm:max-w-[360px] lg:max-w-xl"
-                >
-
-                    <div className="absolute inset-0 -translate-x-2 translate-y-2 rounded-[2rem] bg-sky-500/20 blur-3xl sm:-translate-x-4 sm:translate-y-4" />
-
-                    <div className="absolute inset-0 rounded-[2rem] border border-sky-400/20" />
-
-                    <img
-                        src={personalInfo.photo || process.env.PUBLIC_URL + '/assets/Hachemmy.jpg'}
-                        alt={personalInfo.nom}
-                        className="relative w-full rounded-[2rem] object-cover shadow-[0_0_60px_rgba(59,130,246,0.15)] sm:shadow-[0_0_100px_rgba(59,130,246,0.15)]"
-                    />
-
-                </motion.div>
-
             </div>
         </section>
     );

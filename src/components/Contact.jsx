@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa';
+import { FaArrowRight, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa';
 import { detailsContact } from '../data/donneesPortfolio';
 import SectionAnimee from './SectionAnimee';
 import TitreSection from './TitreSection';
@@ -60,12 +60,17 @@ function Contact() {
             });
     };
 
+    const classeChamp =
+        'mt-2 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none transition placeholder:text-white/40 focus:border-brand';
+
     return (
         <SectionAnimee
             id="contact"
-            className="px-6 pt-16 pb-24 lg:px-8 lg:pt-20"
+            className="relative px-6 pt-16 pb-28 lg:px-8 lg:pt-20"
         >
-            <div className="mx-auto max-w-7xl">
+            <div className="halo-blu -right-40 bottom-0 h-[36rem] w-[36rem] opacity-50" />
+
+            <div className="relative mx-auto max-w-[1480px]">
 
                 <TitreSection
                     etiquette="Contact"
@@ -82,16 +87,7 @@ function Contact() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.6, ease: 'easeOut' }}
-                        className="
-                            rounded-[2rem]
-                            border border-slate-200
-                            bg-white
-                            p-8
-                            shadow-[0_0_50px_rgba(59,130,246,0.08)]
-
-                            dark:border-slate-800/80
-                            dark:bg-slate-900/70
-                        "
+                        className="carte-verre-forte p-8"
                     >
 
                         <div className="space-y-5">
@@ -104,16 +100,12 @@ function Contact() {
                                     className="
                                         flex items-center gap-4
                                         rounded-2xl
-                                        border border-slate-200
-                                        bg-slate-50
+                                        border border-white/10
+                                        bg-white/5
                                         p-4
                                         transition
-                                        hover:border-sky-400
-                                        hover:text-sky-500
-
-                                        dark:border-slate-800/80
-                                        dark:bg-slate-950/60
-                                        dark:hover:text-sky-300
+                                        hover:border-brand/50
+                                        hover:text-brand
                                     "
                                 >
 
@@ -122,10 +114,8 @@ function Contact() {
                                             flex h-11 w-11
                                             items-center justify-center
                                             rounded-2xl
-                                            bg-sky-500/10
-                                            text-sky-500
-
-                                            dark:text-sky-300
+                                            bg-brand/10
+                                            text-brand
                                         "
                                     >
                                         {detail.etiquette === 'Email'
@@ -137,11 +127,11 @@ function Contact() {
 
                                     <div>
 
-                                        <p className="text-sm uppercase tracking-[0.24em] text-slate-500">
+                                        <p className="text-sm uppercase tracking-[0.24em] text-white/50">
                                             {detail.etiquette}
                                         </p>
 
-                                        <p className="mt-1 text-base text-slate-700 dark:text-slate-200">
+                                        <p className="mt-1 text-base text-white">
                                             {detail.valeur}
                                         </p>
 
@@ -163,21 +153,12 @@ function Contact() {
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.6, ease: 'easeOut' }}
                         onSubmit={gererSoumission}
-                        className="
-                            rounded-[2rem]
-                            border border-slate-200
-                            bg-white
-                            p-8
-                            shadow-[0_0_50px_rgba(59,130,246,0.08)]
-
-                            dark:border-slate-800/80
-                            dark:bg-slate-900/70
-                        "
+                        className="carte-verre-forte p-8"
                     >
 
                         <div className="grid gap-5 sm:grid-cols-2">
 
-                            <label className="text-sm text-slate-700 dark:text-slate-300">
+                            <label className="text-sm text-white/70">
 
                                 Nom
 
@@ -187,28 +168,12 @@ function Contact() {
                                     value={donneesFormulaire.nom}
                                     onChange={gererChangement}
                                     required
-                                    className="
-                                        mt-2
-                                        w-full
-                                        rounded-2xl
-                                        border border-slate-300
-                                        bg-white
-                                        px-4
-                                        py-3
-                                        text-slate-900
-                                        outline-none
-                                        transition
-                                        focus:border-sky-400
-
-                                        dark:border-slate-800
-                                        dark:bg-slate-950/80
-                                        dark:text-slate-200
-                                    "
+                                    className={classeChamp}
                                 />
 
                             </label>
 
-                            <label className="text-sm text-slate-700 dark:text-slate-300">
+                            <label className="text-sm text-white/70">
 
                                 Email
 
@@ -218,30 +183,14 @@ function Contact() {
                                     value={donneesFormulaire.email}
                                     onChange={gererChangement}
                                     required
-                                    className="
-                                        mt-2
-                                        w-full
-                                        rounded-2xl
-                                        border border-slate-300
-                                        bg-white
-                                        px-4
-                                        py-3
-                                        text-slate-900
-                                        outline-none
-                                        transition
-                                        focus:border-sky-400
-
-                                        dark:border-slate-800
-                                        dark:bg-slate-950/80
-                                        dark:text-slate-200
-                                    "
+                                    className={classeChamp}
                                 />
 
                             </label>
 
                         </div>
 
-                        <label className="mt-5 block text-sm text-slate-700 dark:text-slate-300">
+                        <label className="mt-5 block text-sm text-white/70">
 
                             Sujet
 
@@ -251,28 +200,12 @@ function Contact() {
                                 value={donneesFormulaire.sujet}
                                 onChange={gererChangement}
                                 required
-                                className="
-                                    mt-2
-                                    w-full
-                                    rounded-2xl
-                                    border border-slate-300
-                                    bg-white
-                                    px-4
-                                    py-3
-                                    text-slate-900
-                                    outline-none
-                                    transition
-                                    focus:border-sky-400
-
-                                    dark:border-slate-800
-                                    dark:bg-slate-950/80
-                                    dark:text-slate-200
-                                "
+                                className={classeChamp}
                             />
 
                         </label>
 
-                        <label className="mt-5 block text-sm text-slate-700 dark:text-slate-300">
+                        <label className="mt-5 block text-sm text-white/70">
 
                             Message
 
@@ -282,47 +215,22 @@ function Contact() {
                                 value={donneesFormulaire.message}
                                 onChange={gererChangement}
                                 required
-                                className="
-                                    mt-2
-                                    w-full
-                                    rounded-2xl
-                                    border border-slate-300
-                                    bg-white
-                                    px-4
-                                    py-3
-                                    text-slate-900
-                                    outline-none
-                                    transition
-                                    focus:border-sky-400
-
-                                    dark:border-slate-800
-                                    dark:bg-slate-950/80
-                                    dark:text-slate-200
-                                "
+                                className={classeChamp}
                             />
 
                         </label>
 
-                        <button
-                            type="submit"
-                            className="
-                                mt-7
-                                rounded-full
-                                bg-sky-500
-                                px-6
-                                py-3
-                                font-medium
-                                text-white
-                                transition
-                                hover:scale-[1.02]
-                                hover:bg-sky-600
-                            "
-                        >
-                            Envoyer le message
-                        </button>
+                        <div className="mt-7">
+                            <button
+                                type="submit"
+                                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-white transition hover:border-white hover:bg-white hover:text-black"
+                            >
+                                Envoyer <FaArrowRight />
+                            </button>
+                        </div>
 
                         {etatMessage && (
-                            <p className="mt-4 text-sm text-slate-600 dark:text-slate-400">
+                            <p className="mt-4 text-sm text-white/60">
                                 {etatMessage}
                             </p>
                         )}

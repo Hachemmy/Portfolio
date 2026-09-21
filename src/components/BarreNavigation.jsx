@@ -1,24 +1,33 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaArrowRight, FaBars, FaTimes, FaMoon, FaSun } from 'react-icons/fa';
+import { FaArrowDown, FaBars, FaTimes, FaHome, FaUser, FaMicrochip, FaFolderOpen, FaBriefcase, FaEnvelope } from 'react-icons/fa';
 import { liensNavigation } from '../data/donneesPortfolio';
-import { ThemeContext } from '../context/ThemeContext';
-
+import { demanderIntro } from '../introSignal';
 
 const lienCV = process.env.PUBLIC_URL + '/assets/CVHachemmy.pdf';
 
+const iconesLien = {
+    Accueil: <FaHome className="h-5 w-5 shrink-0" />,
+    'À propos': <FaUser className="h-5 w-5 shrink-0" />,
+    Compétences: <FaMicrochip className="h-5 w-5 shrink-0" />,
+    Projets: <FaFolderOpen className="h-5 w-5 shrink-0" />,
+    Expérience: <FaBriefcase className="h-5 w-5 shrink-0" />,
+    Contact: <FaEnvelope className="h-5 w-5 shrink-0" />,
+};
 
 function BarreNavigation() {
-    const [estDefile, setEstDefile] = useState(false);
     const [menuMobileOuvert, setMenuMobileOuvert] = useState(false);
-    const { theme, changerTheme } = useContext(ThemeContext);
+    const { pathname } = useLocation();
 
-    useEffect(() => {
-        const gererDefilement = () => setEstDefile(window.scrollY > 20);
-        gererDefilement();
-        window.addEventListener('scroll', gererDefilement, { passive: true });
-        return () => window.removeEventListener('scroll', gererDefilement);
-    }, []);
+    const estActif = (route) => pathname === route;
+
+    const classesPilule = (route) =>
+        `relative inline-flex items-center gap-3 whitespace-nowrap rounded-full border px-7 py-[17px] text-lg transition-colors ${
+            estActif(route)
+                ? 'border-white text-black'
+                : 'border-white/10 text-white hover:border-white hover:bg-white hover:text-black'
+        }`;
 
     useEffect(() => {
         if (menuMobileOuvert) {
@@ -31,21 +40,9 @@ function BarreNavigation() {
         };
     }, [menuMobileOuvert]);
 
-    // Gere le clic sur un lien du menu mobile : ferme le menu, reactive le
-    // scroll du body, PUIS scrolle vers la section une fois l'animation de
-    // fermeture terminee. On evite ainsi le conflit ou le navigateur tente
-    // un saut natif pendant que le scroll est encore bloque (overflow: hidden).
-    const gererClicLienMobile = (href) => (evenement) => {
-        evenement.preventDefault();
+    const fermerMenu = () => {
         setMenuMobileOuvert(false);
         document.body.style.overflow = '';
-
-        window.setTimeout(() => {
-            const cible = document.querySelector(href);
-            if (cible) {
-                cible.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        }, 320); // legerement > duree de l'animation de fermeture (0.3s)
     };
 
     const variants = {
@@ -54,72 +51,93 @@ function BarreNavigation() {
     };
 
     return (
-        <header
-            className={`fixed inset-x-0 top-0 z-50 w-full transition-all duration-500 ${estDefile
-                    ? 'bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl'
-                    : 'bg-white/20 dark:bg-transparent backdrop-blur-sm'
-                }`}
-        >
-            <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-                <a
-                    href="#accueil"
-                    className="flex shrink-0 items-center gap-2 text-base font-semibold tracking-[0.2em] text-slate-900 dark:text-slate-50 sm:gap-3 sm:text-lg sm:tracking-[0.3em]"
-                >
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-sky-400/40 bg-sky-500/10 text-sky-300 sm:h-12 sm:w-12">
+        <header className="fixed inset-x-0 top-0 z-50 w-full bg-transparent">
+            <div className="mx-auto w-full max-w-[1720px] px-6 py-5 sm:px-8 lg:px-10">
+
+                {/* Barre commune noire : du logo jusqu'à Contact */}
+                <div className="flex items-center justify-between gap-3 rounded-full border border-white/10 bg-black/60 px-5 py-3 backdrop-blur-xl">
+
+                    {/* Logo : rond 68px (comme le template) */}
+                    <Link
+                        to="/"
+                        onClick={demanderIntro}
+                        className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/[0.03] transition hover:border-brand/50"
+                        aria-label="Accueil"
+                        style={{ filter: 'drop-shadow(0px -4px 23px rgba(0,0,0,0.25)) drop-shadow(0px 24px 23px rgba(0,0,0,0.25))' }}
+                    >
                         <img
                             src={process.env.PUBLIC_URL + '/assets/Hachemmy.jpg'}
-                            alt="Logo"
-                            className="h-8 w-8 rounded-full object-cover sm:h-10 sm:w-10"
+                            alt="Logo Hachemmy"
+                            className="h-full w-full rounded-full object-cover"
                         />
-                    </span>
-                    <span className="text-sm font-semibold tracking-[0.15em] text-slate-900 dark:text-slate-50 sm:text-base sm:tracking-[0.3em]">
-                        Mr HACHEMMY
-                    </span>
-                </a>
+                    </Link>
 
-                <nav className="hidden items-center gap-6 lg:flex lg:gap-8">
-                    {liensNavigation.map((lien) => (
+                    {/* Nom affiché côté mobile, juste après le logo */}
+                    <span className="flex-1 text-left text-xl font-bold tracking-[-0.02em] whitespace-nowrap lg:hidden">
+                        <span className="text-brand">Mr</span> <span className="text-white">Hachemmy</span>
+                    </span>
+
+                    {/* Groupe de liens en pilules avec icônes 20px */}
+                    <nav className="hidden flex-1 items-center justify-center gap-3 xl:flex">
+                        {[
+                            { label: 'Accueil', route: '/', icone: iconesLien.Accueil },
+                            { label: 'À propos', route: '/a-propos', icone: iconesLien['À propos'] },
+                            { label: 'Compétences', route: '/competences', icone: iconesLien.Compétences },
+                            { label: 'Projets', route: '/projets', icone: iconesLien.Projets },
+                            { label: 'Expérience', route: '/parcours', icone: iconesLien.Expérience }
+                        ].map((lien) => (
+                            <Link
+                                key={lien.label}
+                                to={lien.route}
+                                className={classesPilule(lien.route)}
+                            >
+                                {estActif(lien.route) && (
+                                    <motion.span
+                                        layoutId="nav-pilule"
+                                        className="absolute inset-0 rounded-full bg-white"
+                                        transition={{ type: 'spring', stiffness: 300, damping: 28 }}
+                                    />
+                                )}
+                                <span className="relative flex items-center gap-3">
+                                    {lien.icone}
+                                    {lien.label}
+                                </span>
+                            </Link>
+                        ))}
+                    </nav>
+
+                    <div className="flex items-center gap-3">
+
+                        {/* Télécharger le CV */}
                         <a
-                            key={lien.label}
-                            href={lien.href}
-                            className="whitespace-nowrap text-sm text-slate-600 transition hover:text-sky-500 dark:text-slate-400 dark:hover:text-sky-300"
+                            href={lienCV}
+                            download="CVHachemmy.pdf"
+                            className="hidden items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-white transition hover:border-white hover:bg-white hover:text-black lg:inline-flex"
+                            aria-label="Télécharger le CV"
+                            title="Télécharger le CV"
                         >
-                            {lien.label}
+                            Télécharger CV <FaArrowDown />
                         </a>
-                    ))}
-                </nav>
 
-                <div className="flex items-center gap-3">
+                        {/* CTA "Contact" aligné à droite */}
+                        <Link
+                            to="/contact"
+                            className="hidden rounded-full border border-white/10 bg-white/5 px-7 py-[15px] text-lg font-medium text-white transition hover:border-white hover:bg-white hover:text-black lg:inline-flex"
+                        >
+                            Contact
+                        </Link>
 
-                    <button
-                        type="button"
-                        onClick={changerTheme}
-                        className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-300 bg-slate-100 text-slate-700 transition hover:border-sky-400 hover:text-sky-500 dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-200 dark:hover:border-sky-400 dark:hover:text-sky-300"
-                        aria-label="Changer de thème"
-                    >
-                        {theme === 'dark' ? <FaSun /> : <FaMoon />}
-                    </button>
+                        <button
+                            type="button"
+                            onClick={() => setMenuMobileOuvert((precedent) => !precedent)}
+                            className="shrink-0 rounded-full border border-white/10 bg-white/5 p-3.5 text-white transition hover:border-brand/50 hover:text-brand lg:hidden"
+                            aria-label="Menu"
+                            aria-expanded={menuMobileOuvert}
+                        >
+                            {menuMobileOuvert ? <FaTimes /> : <FaBars />}
+                        </button>
 
-                    <a
-                        href={lienCV}
-                        download="CVHachemmy.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hidden lg:flex shrink-0 items-center gap-2 rounded-full border border-sky-400/40 bg-sky-500/10 px-4 py-2 text-sm font-medium text-sky-300 transition hover:bg-sky-500/20"
-                    >
-                        Télécharger CV <FaArrowRight />
-                    </a>
-
-                    <button
-                        type="button"
-                        onClick={() => setMenuMobileOuvert((precedent) => !precedent)}
-                        className="shrink-0 rounded-full border border-slate-300 bg-slate-100 p-3 text-slate-700 transition hover:border-sky-400 hover:text-sky-500 dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-200 dark:hover:border-sky-400 dark:hover:text-sky-300 lg:hidden"
-                        aria-label="Menu"
-                        aria-expanded={menuMobileOuvert}
-                    >
-                        {menuMobileOuvert ? <FaTimes /> : <FaBars />}
-                    </button>
-
+                    </div>
                 </div>
             </div>
 
@@ -128,32 +146,32 @@ function BarreNavigation() {
                 animate={menuMobileOuvert ? 'open' : 'closed'}
                 variants={variants}
                 transition={{ duration: 0.3 }}
-                className="w-full overflow-y-auto border-t border-slate-300/80 bg-white/95 dark:border-slate-800/80 dark:bg-slate-950/95 lg:hidden"
+                className="w-full overflow-y-auto border-t border-white/10 bg-black/95 backdrop-blur-xl lg:hidden"
                 style={{ maxHeight: 'calc(100vh - 80px)' }}
             >
-                <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 px-4 py-4 sm:px-6">
+                <div className="mx-auto flex w-full max-w-[1480px] flex-col gap-2 px-6 py-4 sm:px-8">
                     {liensNavigation.map((lien) => (
-                        <a
+                        <Link
                             key={lien.label}
-                            href={lien.href}
-                            className="block w-full rounded-2xl px-3 py-3 text-sm text-slate-700 transition hover:bg-slate-100 hover:text-sky-500 dark:text-slate-300 dark:hover:bg-slate-900 dark:hover:text-sky-300"
-                            onClick={gererClicLienMobile(lien.href)}
+                            to={lien.route}
+                            className={`flex w-full items-center gap-3 rounded-full border px-5 py-3.5 text-base transition ${
+                                estActif(lien.route)
+                                    ? 'border-white bg-white text-black'
+                                    : 'border-white/10 bg-white/[0.03] text-white hover:border-white hover:bg-white hover:text-black'
+                            }`}
+                            onClick={fermerMenu}
                         >
+                            {iconesLien[lien.label]}
                             {lien.label}
-                        </a>
+                        </Link>
                     ))}
                     <a
                         href={lienCV}
                         download="CVHachemmy.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-2 flex items-center justify-center gap-2 rounded-full border border-sky-400/40 bg-sky-500/10 px-4 py-3 text-sm font-medium text-sky-600 transition hover:bg-sky-500/20 dark:text-sky-300"
-                        onClick={() => {
-                            setMenuMobileOuvert(false);
-                            document.body.style.overflow = '';
-                        }}
+                        className="mt-2 flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-3.5 text-sm font-medium text-white transition hover:border-white hover:bg-white hover:text-black"
+                        onClick={fermerMenu}
                     >
-                        Télécharger CV <FaArrowRight />
+                        Télécharger le CV <FaArrowDown />
                     </a>
                 </div>
             </motion.nav>

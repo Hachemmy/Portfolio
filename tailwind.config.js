@@ -10,14 +10,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        night: '#030712',
-        panel: '#111827',
-        card: '#1E293B',
-        brand: '#3B82F6',
+        night: '#000000',
+        panel: '#000000',
+        card: '#0A0A0A',
+        brand: '#aed0fc',
         react: '#61DAFB',
-        lightblue: '#60A5FA',
-        textPrimary: '#F8FAFC',
-        textSecondary: '#94A3B8',
+        lightblue: '#aed0fc',
+        textPrimary: '#FFFFFF',
+        textSecondary: 'rgba(255,255,255,0.7)',
+      },
+      boxShadow: {
+        'halo': '0 0 80px rgba(174,208,252,0.25)',
       },
     },
   },
