@@ -115,7 +115,7 @@ function CarteDetail({ index, fin, label, type, surOuverture, vers }) {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.55, delay: index * 0.08, ease: 'easeOut' }}
             whileHover={{ y: -6 }}
-            className="carte-verre-forte block w-full p-8 text-left lg:p-10"
+            className="carte-verre-forte block h-full w-full p-8 text-left lg:p-10"
             aria-label={`Détail : ${label}`}
         >
             <p className="text-5xl font-bold tracking-[-0.04em] text-white lg:text-[56px]">
@@ -129,7 +129,7 @@ function CarteDetail({ index, fin, label, type, surOuverture, vers }) {
 
     if (vers) {
         return (
-            <Link to={vers} className="block w-full">
+            <Link to={vers} className="block h-full w-full">
                 {contenu}
             </Link>
         );
