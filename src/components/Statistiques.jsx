@@ -48,21 +48,19 @@ function CarteLangues({ index }) {
             transition={{ duration: 0.55, delay: index * 0.08, ease: 'easeOut' }}
             className="block h-full w-full"
         >
-            <motion.button
+            <button
                 type="button"
                 aria-label="Voir les langues parlées"
                 onClick={() => setRetourne((precedent) => !precedent)}
                 className="block h-full w-full text-left"
-                style={{ perspective: '1200px' }}
+                style={{ perspective: '1200px', WebkitPerspective: '1200px' }}
             >
-                <motion.span
-                    animate={{ rotateY: retourne ? 180 : 0 }}
-                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                    className="flip-contenu relative block h-full w-full"
+                <span
+                    className={`flip-contenu relative block h-full w-full ${retourne ? 'flip-retourne' : ''}`}
                 >
                 {/* Face avant : compteur */}
                 <span
-                    className="flip-face carte-verre-forte flex h-full w-full flex-col p-8 lg:p-10"
+                    className="flip-face carte-verre-forte absolute inset-0 flex h-full w-full flex-col p-8 lg:p-10"
                 >
                     <span className="text-5xl font-bold tracking-[-0.04em] text-white lg:text-[56px]">
                         <Compteur fin={langues.length} />
@@ -92,9 +90,9 @@ function CarteLangues({ index }) {
                             </span>
                         ))}
                     </span>
-</span>
-                </motion.span>
-            </motion.button>
+                </span>
+                </span>
+            </button>
         </motion.div>
     );
 }

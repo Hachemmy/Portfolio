@@ -65,18 +65,25 @@ section {
   .flip-contenu {
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .flip-retourne {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
   }
 
   .flip-face {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    -webkit-transform-style: preserve-3d;
+    -webkit-transform: translateZ(0.1px);
+    transform: translateZ(0.1px);
   }
 
   .flip-face-arriere {
-    transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
-    -webkit-transform-style: preserve-3d;
+    transform: rotateY(180deg) translateZ(0.1px);
+    -webkit-transform: rotateY(180deg) translateZ(0.1px);
   }
 
   .halo-blu {
