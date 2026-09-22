@@ -26,15 +26,6 @@ function Projets() {
                         titre="Mes réalisations, techniques et visuellement raffinées"
                         description="Chaque projet reflète une approche soignée du détail, du responsive et de l’expérience utilisateur."
                     />
-
-                    <a
-                        href="https://github.com/Hachemmy/"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="shrink-0 text-lg font-medium text-brand transition hover:text-white"
-                    >
-                        Voir plus sur GitHub →
-                    </a>
                 </div>
 
                 {/* Bandeau "Mes plus grands projets" : les trois dans le detail */}
