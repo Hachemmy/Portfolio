@@ -46,13 +46,13 @@ function CarteLangues({ index }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.55, delay: index * 0.08, ease: 'easeOut' }}
-            className="block w-full"
+            className="block h-full w-full"
         >
             <motion.button
                 type="button"
                 aria-label="Voir les langues parlées"
                 onClick={() => setRetourne((precedent) => !precedent)}
-                className="block w-full text-left"
+                className="block h-full w-full text-left"
                 style={{ perspective: '1200px' }}
             >
                 <motion.span
