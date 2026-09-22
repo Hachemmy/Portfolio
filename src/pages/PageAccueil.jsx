@@ -25,7 +25,7 @@ function PageAccueil() {
             {/* Fond mobile : photo visible au niveau du prénom et de la signature */}
             <div className="pointer-events-none absolute inset-0 z-0 lg:hidden">
                 <div
-                    className="absolute inset-0 opacity-[0.3]"
+                    className="absolute inset-0 opacity-[0.5]"
                     style={{
                         backgroundImage: `url(${process.env.PUBLIC_URL}/assets/HC.png)`,
                         backgroundSize: 'contain',
@@ -34,7 +34,7 @@ function PageAccueil() {
                     }}
                 />
                 <div
-                    className="absolute inset-0 opacity-[0.3]"
+                    className="absolute inset-0 opacity-[0.9]"
                     style={{
                         backgroundImage: `url(${process.env.PUBLIC_URL}/assets/HC.png)`,
                         backgroundSize: 'contain',
@@ -48,7 +48,7 @@ function PageAccueil() {
             {/* Fond desktop : parallax fixe */}
             <div className="pointer-events-none absolute inset-0 z-0 hidden lg:block">
                 <div
-                    className="absolute inset-0 bg-cover bg-[50%_20%] bg-fixed opacity-[0.22]"
+                    className="absolute inset-0 bg-cover bg-[50%_20%] bg-fixed opacity-[0.5]"
                     style={{
                         backgroundImage: `url(${process.env.PUBLIC_URL}/assets/HC.png)`,
                     }}
