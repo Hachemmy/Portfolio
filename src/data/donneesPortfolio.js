@@ -99,15 +99,6 @@ export const competences = [
 
 export const projets = [
     {
-        titre: 'Messagerie Web',
-        image:
-            'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmessagerie.infinityfree.me%2F?w=900',
-        description: 'Système de messagerie web complet avec PHP et MySQL, offrant une interface utilisateur intuitive et des fonctionnalités de communication sécurisées.',
-        technologies: ['PHP', 'HTML', 'CSS', 'SQL', 'JavaScript'],
-        github: 'https://github.com/Hachemmy/messagerie/',
-        demo: 'https://messagerie.infinityfree.me/',
-    },
-    {
         titre: 'Storage Manager',
         image:
             'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fstorage-manager-sigma.vercel.app?w=900',
@@ -115,6 +106,33 @@ export const projets = [
         technologies: ['React', 'Tailwind', 'Material UI'],
         github: 'https://github.com/Hachemmy/Storage-Manager',
         demo: 'https://storage-manager-sigma.vercel.app',
+    },
+    {
+        titre: "Flem'art",
+        image: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fflemart-frontend.onrender.com?w=900',
+        description: "Flem'Art est une application web de gestion et de partage de projets de programmation avec des fonctionnalités sociales, d'apprentissage et de motivation.",
+        technologies: ['React.js', 'TypeScript', 'Tailwind CSS', 'Express.js', 'MySQL', 'JWT', 'REST API'],
+        github: 'https://github.com/Hachemmy/Flemart',
+        demo: 'https://flemart-frontend.onrender.com',
+    },
+    {
+        titre: 'Routage IP',
+        image: process.env.PUBLIC_URL + '/images/RoutageIP.png',
+        description:
+            'Simulation de routage IP avec protocoles RIP et OSPF, démontrant la configuration et la gestion des réseaux.',
+        technologies: ['RIP', 'OSPF', 'GNS3', 'Wireshark'],
+        github: 'https://github.com/Hachemmy/RoutageIP/',
+        demo: '/assets/RoutageIP.gns3',
+        telecharger: true,
+    },
+    {
+        titre: 'Messagerie Web',
+        image:
+            'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmessagerie.infinityfree.me%2F?w=900',
+        description: 'Système de messagerie web complet avec PHP et MySQL, offrant une interface utilisateur intuitive et des fonctionnalités de communication sécurisées.',
+        technologies: ['PHP', 'HTML', 'CSS', 'SQL', 'JavaScript'],
+        github: 'https://github.com/Hachemmy/messagerie/',
+        demo: 'https://messagerie.infinityfree.me/',
     },
     {
         titre: 'Quiz-Madagascar',
@@ -134,31 +152,12 @@ export const projets = [
         demo: 'https://hachemmy.github.io/TIK-TAK-TOE-by-Hachemmy/',
     },
     {
-        titre: 'Routage IP',
-        image: process.env.PUBLIC_URL + '/images/RoutageIP.png',
-        description:
-            'Simulation de routage IP avec protocoles RIP et OSPF, démontrant la configuration et la gestion des réseaux.',
-        technologies: ['RIP', 'OSPF', 'GNS3', 'Wireshark'],
-        github: 'https://github.com/Hachemmy/RoutageIP/',
-        demo: '/assets/RoutageIP.gns3',
-        telecharger: true,
-    },
-    {
         titre: 'Portfolio Personnel',
         image: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fportfolio-hachemmy.vercel.app?w=900',
         description: 'Site vitrine personnel présentant mon profil, mes compétences et mes projets, conçu avec une interface moderne et responsive.',
         technologies: ['React', 'JavaScript', 'CSS', 'Tailwind CSS', 'Framer Motion'],
         github: 'https://github.com/Hachemmy/portfolio',
         demo: 'https://portfolio-hachemmy.vercel.app',
-    },
-
-    {
-        titre: "Flem'art",
-        image: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fflemart-frontend.onrender.com?w=900',
-        description: "Flem'Art est une application web de gestion et de partage de projets de programmation avec des fonctionnalités sociales, d'apprentissage et de motivation.",
-        technologies: ['React.js', 'TypeScript', 'Tailwind CSS', 'Express.js', 'MySQL', 'JWT', 'REST API'],
-        github: 'https://github.com/Hachemmy/Flemart',
-        demo: 'https://flemart-frontend.onrender.com',
     },
     {
         titre: 'CapJob & Help',
@@ -168,9 +167,6 @@ export const projets = [
         demo: 'https://capjobhelp.infinityfree.me/',
         github: 'https://github.com/Hachemmy/CapJob-Help'
     },
-
-
-
 ];
 
 export const parcours = [

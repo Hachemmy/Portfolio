@@ -37,6 +37,72 @@ function Projets() {
                     </a>
                 </div>
 
+                {/* Bandeau "Mes plus grands projets" : les trois dans le detail */}
+                <div className="mt-16">
+                    <TitreSection
+                        etiquette="Sélection"
+                        titre="Mes plus grands projets"
+                        description="Trois projets dans le détail"
+                    />
+
+                    <div className="mt-16 grid gap-8 lg:grid-cols-3">
+                        {projetsVedettes.map((projet, index) => (
+                            <motion.article
+                                key={projet.titre}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true, amount: 0.2 }}
+                                transition={{ duration: 0.6, delay: index * 0.12, ease: 'easeOut' }}
+                                whileHover={{ y: -8 }}
+                                className="carte-verre-forte rounded-[60px] p-4"
+                            >
+                                <img
+                                    src={projet.image}
+                                    alt={projet.titre}
+                                    className="h-60 w-full rounded-[40px] object-cover"
+                                />
+
+                                <div className="p-5 pb-3">
+                                    <h3 className="text-2xl font-bold tracking-[-0.04em] text-white">
+                                        {projet.titre}
+                                    </h3>
+                                </div>
+
+                                <p className="px-5 pb-5 text-sm leading-6 text-white/60">
+                                    {projet.description}
+                                </p>
+
+                                <div className="px-5 pb-5 flex items-center gap-3">
+                                    <a
+                                        href={projet.github}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="inline-flex flex-1 items-center justify-center gap-2 rounded-[60px] border border-white/10 bg-white/5 px-6 py-4 text-sm font-medium text-white/80 transition hover:border-brand/50 hover:text-brand"
+                                    >
+                                        <FaGithub /> GitHub
+                                    </a>
+                                    <a
+                                        href={projet.demo}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="inline-flex flex-1 items-center justify-center gap-2 rounded-[60px] border border-brand/40 bg-brand/10 px-6 py-4 text-sm font-medium text-brand transition hover:border-brand/70 hover:bg-brand/20"
+                                    >
+                                        <FaArrowRight /> {projet.telecharger ? 'Télécharger' : 'Voir la démo'}
+                                    </a>
+                                </div>
+                            </motion.article>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="mt-20 mb-8 flex items-center gap-4">
+                    <span className="h-px flex-1 bg-white/10" />
+                    <h2 className="shrink-0 px-2 text-sm font-semibold uppercase tracking-[0.3em] text-white/70">
+                        Mes autres projets
+                    </h2>
+                    <span className="h-px flex-1 bg-white/10" />
+                </div>
+
                 <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     {projets.map((projet, index) => (
                         <motion.article
@@ -97,64 +163,6 @@ function Projets() {
                             </div>
                         </motion.article>
                     ))}
-                </div>
-
-                {/* ——— Bandeau "Marketplace" : projets sélectionnés ——— */}
-                <div className="mt-32">
-                    <TitreSection
-                        etiquette="Sélection"
-                        titre="Mes plus grands projets"
-                        description="Trois projets dans le détail"
-                    />
-
-                    <div className="mt-16 grid gap-8 lg:grid-cols-3">
-                        {projetsVedettes.map((projet, index) => (
-                            <motion.article
-                                key={projet.titre}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true, amount: 0.2 }}
-                                transition={{ duration: 0.6, delay: index * 0.12, ease: 'easeOut' }}
-                                whileHover={{ y: -8 }}
-                                className="carte-verre-forte rounded-[60px] p-4"
-                            >
-                                <img
-                                    src={projet.image}
-                                    alt={projet.titre}
-                                    className="h-60 w-full rounded-[40px] object-cover"
-                                />
-
-                                <div className="p-5 pb-3">
-                                    <h3 className="text-2xl font-bold tracking-[-0.04em] text-white">
-                                        {projet.titre}
-                                    </h3>
-                                </div>
-
-                                <p className="px-5 pb-5 text-sm leading-6 text-white/60">
-                                    {projet.description}
-                                </p>
-
-                                <div className="px-5 pb-5 flex items-center gap-3">
-                                    <a
-                                        href={projet.github}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="inline-flex flex-1 items-center justify-center gap-2 rounded-[60px] border border-white/10 bg-white/5 px-6 py-4 text-sm font-medium text-white/80 transition hover:border-brand/50 hover:text-brand"
-                                    >
-                                        <FaGithub /> GitHub
-                                    </a>
-                                    <a
-                                        href={projet.demo}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="inline-flex flex-1 items-center justify-center gap-2 rounded-[60px] border border-brand/40 bg-brand/10 px-6 py-4 text-sm font-medium text-brand transition hover:border-brand/70 hover:bg-brand/20"
-                                    >
-                                        <FaArrowRight /> {projet.telecharger ? 'Télécharger' : 'Voir la démo'}
-                                    </a>
-                                </div>
-                            </motion.article>
-                        ))}
-                    </div>
                 </div>
 
                 <div className="mt-20 flex items-center justify-center">
