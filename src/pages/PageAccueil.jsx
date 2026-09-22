@@ -22,26 +22,40 @@ function PageAccueil() {
                 <AnimationDeDebut onTermine={() => setMontrerIntro(false)} />
             )}
             {/* Fond HC.png fixe, continu sur toute la page avant le footer */}
-            {/* Fond mobile : photo visible au niveau du prénom et de la signature */}
+{/* Fond mobile : photo visible au niveau du prénom et de la signature */}
             <div className="pointer-events-none absolute inset-0 z-0 lg:hidden">
                 <div
-                    className="absolute inset-0 opacity-[0.5]"
+                    className="absolute inset-x-0 opacity-[0.5]"
                     style={{
-                        backgroundImage: `url(${process.env.PUBLIC_URL}/assets/HC.png)`,
-                        backgroundSize: 'contain',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundPosition: '50% 4%',
+                        top: '151px',
+                        aspectRatio: '1086 / 1448',
                     }}
-                />
+                >
+                    <div
+                        className="h-full w-full"
+                        style={{
+                            backgroundImage: `url(${process.env.PUBLIC_URL}/assets/HC-nobg.png)`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: '50% 0%',
+                        }}
+                    />
+                </div>
                 <div
-                    className="absolute inset-0 opacity-[0.9]"
+                    className="absolute inset-x-0 opacity-[0.9]"
                     style={{
-                        backgroundImage: `url(${process.env.PUBLIC_URL}/assets/HC.png)`,
-                        backgroundSize: 'contain',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundPosition: '50% 43%',
+                        top: '1628px',
+                        aspectRatio: '1086 / 1448',
                     }}
-                />
+                >
+                    <div
+                        className="h-full w-full"
+                        style={{
+                            backgroundImage: `url(${process.env.PUBLIC_URL}/assets/HC-nobg.png)`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: '50% 0%',
+                        }}
+                    />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black" />
             </div>
 
