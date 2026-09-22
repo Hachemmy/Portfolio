@@ -62,6 +62,23 @@ section {
     border-radius: 30px;
   }
 
+  .flip-contenu {
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+  }
+
+  .flip-face {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+  }
+
+  .flip-face-arriere {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    -webkit-transform-style: preserve-3d;
+  }
+
   .halo-blu {
     position: absolute;
     border-radius: 9999px;

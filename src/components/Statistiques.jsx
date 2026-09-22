@@ -58,13 +58,11 @@ function CarteLangues({ index }) {
                 <motion.span
                     animate={{ rotateY: retourne ? 180 : 0 }}
                     transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                    className="relative block h-full w-full"
-                    style={{ transformStyle: 'preserve-3d' }}
+                    className="flip-contenu relative block h-full w-full"
                 >
                 {/* Face avant : compteur */}
                 <span
-                    className="carte-verre-forte flex h-full w-full flex-col p-8 lg:p-10"
-                    style={{ backfaceVisibility: 'hidden' }}
+                    className="flip-face carte-verre-forte flex h-full w-full flex-col p-8 lg:p-10"
                 >
                     <span className="text-5xl font-bold tracking-[-0.04em] text-white lg:text-[56px]">
                         <Compteur fin={langues.length} />
@@ -76,11 +74,7 @@ function CarteLangues({ index }) {
 
                 {/* Face arrière : langues avec drapeaux */}
                 <span
-                    className="carte-verre-forte absolute inset-0 flex w-full flex-col justify-center gap-3 p-5 lg:p-8"
-                    style={{
-                        backfaceVisibility: 'hidden',
-                        transform: 'rotateY(180deg)',
-                    }}
+                    className="flip-face flip-face-arriere carte-verre-forte absolute inset-0 flex w-full flex-col justify-center gap-3 p-5 lg:p-8"
                 >
                     <span className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-brand">
                         Langues parlées
