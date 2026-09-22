@@ -41,23 +41,26 @@ function CarteLangues({ index }) {
     const [retourne, setRetourne] = useState(false);
 
     return (
-        <motion.button
-            type="button"
-            aria-label="Voir les langues parlées"
-            onClick={() => setRetourne((precedent) => !precedent)}
+        <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.55, delay: index * 0.08, ease: 'easeOut' }}
-            className="block w-full text-left"
-            style={{ perspective: '1200px' }}
+            className="block w-full"
         >
-            <motion.span
-                animate={{ rotateY: retourne ? 180 : 0 }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="relative block h-full w-full"
-                style={{ transformStyle: 'preserve-3d' }}
+            <motion.button
+                type="button"
+                aria-label="Voir les langues parlées"
+                onClick={() => setRetourne((precedent) => !precedent)}
+                className="block w-full text-left"
+                style={{ perspective: '1200px' }}
             >
+                <motion.span
+                    animate={{ rotateY: retourne ? 180 : 0 }}
+                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    className="relative block h-full w-full"
+                    style={{ transformStyle: 'preserve-3d' }}
+                >
                 {/* Face avant : compteur */}
                 <span
                     className="carte-verre-forte flex h-full w-full flex-col p-8 lg:p-10"
@@ -95,9 +98,10 @@ function CarteLangues({ index }) {
                             </span>
                         ))}
                     </span>
-                </span>
-            </motion.span>
-        </motion.button>
+</span>
+                </motion.span>
+            </motion.button>
+        </motion.div>
     );
 }
 
