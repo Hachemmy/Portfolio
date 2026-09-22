@@ -40,6 +40,11 @@ function PageAccueil() {
                         }}
                     />
                 </div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black" />
+            </div>
+
+            {/* Deuxième image mobile */}
+            <div className="pointer-events-none absolute inset-x-0 z-0 lg:hidden">
                 <div
                     className="absolute inset-x-0 opacity-[0.9]"
                     style={{
@@ -56,7 +61,6 @@ function PageAccueil() {
                         }}
                     />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black" />
             </div>
 
             {/* Fond desktop : parallax fixe */}

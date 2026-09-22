@@ -52,16 +52,16 @@ function BarreNavigation() {
 
     return (
         <header className="fixed inset-x-0 top-0 z-50 w-full bg-transparent">
-            <div className="mx-auto w-full max-w-[1720px] px-6 py-5 sm:px-8 lg:px-10">
+            <div className="mx-auto w-full max-w-[1720px] px-6 py-2 sm:px-8 lg:py-5 lg:px-10">
 
                 {/* Barre commune noire : du logo jusqu'à Contact */}
-                <div className="flex items-center justify-between gap-3 rounded-full border border-white/10 bg-black/60 px-5 py-3 backdrop-blur-xl">
+                <div className="flex items-center justify-between gap-3 rounded-full border border-white/10 bg-black/60 px-4 py-2 backdrop-blur-xl lg:px-5 lg:py-3">
 
                     {/* Logo : rond 68px (comme le template) */}
                     <Link
                         to="/"
                         onClick={demanderIntro}
-                        className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/[0.03] transition hover:border-brand/50"
+                        className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/[0.03] transition hover:border-brand/50 lg:h-16 lg:w-16"
                         aria-label="Accueil"
                         style={{ filter: 'drop-shadow(0px -4px 23px rgba(0,0,0,0.25)) drop-shadow(0px 24px 23px rgba(0,0,0,0.25))' }}
                     >
@@ -125,7 +125,7 @@ function BarreNavigation() {
                         <button
                             type="button"
                             onClick={() => setMenuMobileOuvert((precedent) => !precedent)}
-                            className="shrink-0 rounded-full border border-white/10 bg-white/5 p-3.5 text-white transition hover:border-brand/50 hover:text-brand lg:hidden"
+                            className="shrink-0 rounded-full border border-white/10 bg-white/5 p-2.5 text-white transition hover:border-brand/50 hover:text-brand lg:hidden lg:p-3.5"
                             aria-label="Menu"
                             aria-expanded={menuMobileOuvert}
                         >

@@ -1,18 +1,22 @@
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, animate, useInView } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { FaBuilding, FaTimes } from 'react-icons/fa';
 import {
     experiencesProfessionnelles,
     formations,
     langues,
+    projets,
 } from '../data/donneesPortfolio';
 import SectionAnimee from './SectionAnimee';
 import TitreSection from './TitreSection';
 
-const statistiquesReelles = [
-    { fin: 21, label: 'Projets réalisés' },
-    { fin: experiencesProfessionnelles.length, label: 'Expériences & challenges' },
-    { fin: formations.length, label: 'Formations & certifications' },
-    { fin: langues.length, label: 'Langues parlées' },
+const languesAvecDrapeaux = [
+    { nom: 'Malagasy', drapeau: '🇲🇬' },
+    { nom: 'Français', drapeau: '🇫🇷' },
+    { nom: 'English', drapeau: '🇬🇧' },
+    { nom: 'Deutsch', drapeau: '🇩🇪' },
 ];
 
 function Compteur({ fin }) {
@@ -33,7 +37,247 @@ function Compteur({ fin }) {
     return <span ref={reference}>{valeur}</span>;
 }
 
+function CarteLangues({ index }) {
+    const [retourne, setRetourne] = useState(false);
+
+    return (
+        <motion.button
+            type="button"
+            aria-label="Voir les langues parlées"
+            onClick={() => setRetourne((precedent) => !precedent)}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.55, delay: index * 0.08, ease: 'easeOut' }}
+            className="block w-full text-left"
+            style={{ perspective: '1200px' }}
+        >
+            <motion.span
+                animate={{ rotateY: retourne ? 180 : 0 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="relative block h-full w-full"
+                style={{ transformStyle: 'preserve-3d' }}
+            >
+                {/* Face avant : compteur */}
+                <span
+                    className="carte-verre-forte flex h-full w-full flex-col p-8 lg:p-10"
+                    style={{ backfaceVisibility: 'hidden' }}
+                >
+                    <span className="text-5xl font-bold tracking-[-0.04em] text-white lg:text-[56px]">
+                        <Compteur fin={langues.length} />
+                    </span>
+                    <span className="mt-3 text-lg text-white/60">
+                        Langues parlées
+                    </span>
+                </span>
+
+                {/* Face arrière : langues avec drapeaux */}
+                <span
+                    className="carte-verre-forte absolute inset-0 flex w-full flex-col justify-center gap-3 p-5 lg:p-8"
+                    style={{
+                        backfaceVisibility: 'hidden',
+                        transform: 'rotateY(180deg)',
+                    }}
+                >
+                    <span className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-brand">
+                        Langues parlées
+                    </span>
+                    <span className="grid grid-cols-2 gap-2">
+                        {languesAvecDrapeaux.map((langue) => (
+                            <span
+                                key={langue.nom}
+                                className="flex flex-col items-center justify-center gap-1 rounded-[14px] border border-white/10 bg-white/[0.03] px-2 py-2 text-center"
+                            >
+                                <span className="text-xl leading-none">{langue.drapeau}</span>
+                                <span className="text-xs font-semibold text-white">
+                                    {langue.nom}
+                                </span>
+                            </span>
+                        ))}
+                    </span>
+                </span>
+            </motion.span>
+        </motion.button>
+    );
+}
+
+function CarteDetail({ index, fin, label, type, surOuverture, vers }) {
+    const contenu = (
+        <motion.button
+            type="button"
+            onClick={vers ? undefined : () => surOuverture(type)}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.55, delay: index * 0.08, ease: 'easeOut' }}
+            whileHover={{ y: -6 }}
+            className="carte-verre-forte block w-full p-8 text-left lg:p-10"
+            aria-label={`Détail : ${label}`}
+        >
+            <p className="text-5xl font-bold tracking-[-0.04em] text-white lg:text-[56px]">
+                <Compteur fin={fin} />
+            </p>
+            <p className="mt-3 text-lg text-white/60">
+                {label}
+            </p>
+        </motion.button>
+    );
+
+    if (vers) {
+        return (
+            <Link to={vers} className="block w-full">
+                {contenu}
+            </Link>
+        );
+    }
+    return contenu;
+}
+
+function FenetreDetails({ type, surFermer }) {
+    useEffect(() => {
+        document.body.style.overflow = 'hidden';
+        const gestionEchap = (e) => {
+            if (e.key === 'Escape') surFermer();
+        };
+        window.addEventListener('keydown', gestionEchap);
+        return () => {
+            document.body.style.overflow = '';
+            window.removeEventListener('keydown', gestionEchap);
+        };
+    }, [surFermer]);
+
+    const estFormation = type === 'formation';
+    const donnees = estFormation ? formations : experiencesProfessionnelles;
+    const etiquette = estFormation
+        ? 'Formations & certifications'
+        : 'Expériences & challenges';
+
+    return createPortal(
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[70] flex items-start justify-center overflow-y-auto bg-black/70 px-4 py-10 backdrop-blur-sm sm:py-16"
+            onClick={surFermer}
+        >
+            <motion.div
+                initial={{ opacity: 0, y: 30, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 20, scale: 0.97 }}
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative w-full max-w-3xl"
+            >
+                <div className="carte-verre-forte overflow-hidden rounded-[40px]">
+                    <div className="flex items-center justify-between gap-4 border-b border-white/10 px-7 py-5 sm:px-10">
+                        <div>
+                            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand">
+                                Détail
+                            </p>
+                            <h3 className="mt-1 text-2xl font-bold tracking-[-0.03em] text-white sm:text-3xl">
+                                {etiquette}
+                            </h3>
+                        </div>
+                        <button
+                            type="button"
+                            onClick={surFermer}
+                            aria-label="Fermer"
+                            className="shrink-0 rounded-full border border-white/10 bg-white/5 p-3 text-white transition hover:border-brand/50 hover:text-brand"
+                        >
+                            <FaTimes />
+                        </button>
+                    </div>
+
+                    <div className="space-y-4 px-5 py-6 sm:px-10 sm:py-8">
+                        {donnees.length === 0 && (
+                            <p className="text-white/60">Aucune donnée.</p>
+                        )}
+
+                        {!estFormation &&
+                            donnees.map((element, index) => (
+                                <motion.div
+                                    key={element.poste || index}
+                                    initial={{ opacity: 0, x: -16 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.4, delay: index * 0.04 }}
+                                    className="rounded-[24px] border border-white/10 bg-white/[0.03] p-5 sm:p-6"
+                                >
+                                    <span className="inline-block rounded-full border border-brand/40 bg-brand/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-brand">
+                                        {element.date}
+                                    </span>
+                                    <h4 className="mt-3 text-xl font-bold tracking-[-0.02em] text-white">
+                                        {element.poste}
+                                    </h4>
+                                    {element.structure && (
+                                        <p className="mt-1.5 flex items-center gap-2 text-sm font-medium text-white/60">
+                                            <FaBuilding className="shrink-0 text-brand" />
+                                            {element.structure}
+                                        </p>
+                                    )}
+                                    {element.details && (
+                                        <p className="mt-3 text-sm leading-6 text-white/70">
+                                            {element.details}
+                                        </p>
+                                    )}
+                                </motion.div>
+                            ))}
+
+                        {estFormation &&
+                            donnees.map((element, index) => (
+                                <motion.div
+                                    key={element.titre || index}
+                                    initial={{ opacity: 0, x: -16 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.4, delay: index * 0.04 }}
+                                    className="rounded-[24px] border border-white/10 bg-white/[0.03] p-5 sm:p-6"
+                                >
+                                    <span className="inline-block rounded-full border border-brand/40 bg-brand/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-brand">
+                                        {element.periode}
+                                    </span>
+                                    <h4 className="mt-3 text-xl font-bold tracking-[-0.02em] text-white">
+                                        {element.titre}
+                                    </h4>
+                                    <p className="mt-1.5 flex items-center gap-2 text-sm font-medium text-white/60">
+                                        <FaBuilding className="shrink-0 text-brand" />
+                                        {element.etablissement}
+                                    </p>
+                                    {(element.mention || element.niveau) && (
+                                        <p className="mt-1.5 text-sm font-semibold text-brand">
+                                            {element.mention || element.niveau}
+                                        </p>
+                                    )}
+                                    {element.details && (
+                                        <p className="mt-3 text-sm leading-6 text-white/70">
+                                            {element.details}
+                                        </p>
+                                    )}
+                                </motion.div>
+                            ))}
+                    </div>
+                </div>
+            </motion.div>
+        </motion.div>,
+        document.body
+    );
+}
+
 function Statistiques() {
+    const [fenetreOuverte, setFenetreOuverte] = useState(null);
+
+    const carteEntiere = (index, fin, label, type, vers) =>
+        type === 'langues' ? (
+            <CarteLangues index={index} />
+        ) : (
+            <CarteDetail
+                index={index}
+                fin={fin}
+                label={label}
+                type={type}
+                vers={vers}
+                surOuverture={setFenetreOuverte}
+            />
+        );
+
     return (
         <SectionAnimee
             id="statistiques"
@@ -50,27 +294,28 @@ function Statistiques() {
                 />
 
                 <div className="mt-16 grid grid-cols-2 gap-6 lg:grid-cols-4">
-                    {statistiquesReelles.map((statistique, index) => (
-                        <motion.div
-                            key={statistique.label}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.3 }}
-                            transition={{ duration: 0.55, delay: index * 0.08, ease: 'easeOut' }}
-                            whileHover={{ y: -6 }}
-                            className="carte-verre-forte p-8 lg:p-10"
-                        >
-                            <p className="text-5xl font-bold tracking-[-0.04em] text-white lg:text-[56px]">
-                                <Compteur fin={statistique.fin} />
-                            </p>
-                            <p className="mt-3 text-lg text-white/60">
-                                {statistique.label}
-                            </p>
-                        </motion.div>
-                    ))}
+                    <CarteDetail
+                        index={0}
+                        fin={projets.length}
+                        label="Projets réalisés"
+                        type="projets"
+                        vers="/projets"
+                        surOuverture={setFenetreOuverte}
+                    />
+
+                    {carteEntiere(1, experiencesProfessionnelles.length, 'Expériences & challenges', 'experience')}
+                    {carteEntiere(2, formations.length, 'Formations & certifications', 'formation')}
+                    {carteEntiere(3, langues.length, 'Langues parlées', 'langues')}
                 </div>
 
             </div>
+
+            {fenetreOuverte && (
+                <FenetreDetails
+                    type={fenetreOuverte}
+                    surFermer={() => setFenetreOuverte(null)}
+                />
+            )}
         </SectionAnimee>
     );
 }

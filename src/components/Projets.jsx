@@ -1,14 +1,24 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaArrowRight, FaGithub } from 'react-icons/fa';
 import { projets } from '../data/donneesPortfolio';
 import SectionAnimee from './SectionAnimee';
 import TitreSection from './TitreSection';
 
+const categoriesProjets = [
+    { valeur: 'developpement', etiquette: 'Développement' },
+    { valeur: 'reseaux', etiquette: 'Réseaux & systèmes' },
+];
+
 function Projets() {
-    const titresVedettes = ['Storage Manager', "Flem'art", 'Routage IP'];
+    const [categorieActive, setCategorieActive] = useState('developpement');
+
+    const titresVedettes = ["Flem'art", 'Projet Service Réseaux', 'Routage IP'];
     const projetsVedettes = titresVedettes
         .map((titre) => projets.find((projet) => projet.titre === titre))
         .filter(Boolean);
+
+    const projetsAutres = projets.filter((projet) => projet.categorie === categorieActive);
 
     return (
         <SectionAnimee
@@ -28,7 +38,34 @@ function Projets() {
                     />
                 </div>
 
-                {/* Bandeau "Mes plus grands projets" : les trois dans le detail */}
+                {/* Toggle de catégorie */}
+                    <div className="mt-10 flex justify-center">
+                        <div className="relative flex rounded-full border border-white/10 bg-white/[0.03] p-1.5 backdrop-blur-xl">
+                            {categoriesProjets.map((categorie) => (
+                                <button
+                                    key={categorie.valeur}
+                                    type="button"
+                                    onClick={() => setCategorieActive(categorie.valeur)}
+                                    className={`relative z-10 rounded-full px-5 py-3 text-sm font-semibold transition-colors duration-300 sm:px-8 sm:text-base ${
+                                        categorieActive === categorie.valeur
+                                            ? 'text-black'
+                                            : 'text-white/70 hover:text-white'
+                                    }`}
+                                >
+                                    {categorieActive === categorie.valeur && (
+                                        <motion.span
+                                            layoutId="pilule-categorie"
+                                            className="absolute inset-0 z-[-1] rounded-full bg-white"
+                                            transition={{ type: 'spring', stiffness: 300, damping: 28 }}
+                                        />
+                                    )}
+                                    {categorie.etiquette}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Bandeau "Mes plus grands projets" : les trois dans le detail */}
                 <div className="mt-16">
                     <TitreSection
                         etiquette="Sélection"
@@ -63,24 +100,26 @@ function Projets() {
                                     {projet.description}
                                 </p>
 
-                                <div className="px-5 pb-5 flex items-center gap-3">
-                                    <a
-                                        href={projet.github}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="inline-flex flex-1 items-center justify-center gap-2 rounded-[60px] border border-white/10 bg-white/5 px-6 py-4 text-sm font-medium text-white/80 transition hover:border-brand/50 hover:text-brand"
-                                    >
-                                        <FaGithub /> GitHub
-                                    </a>
-                                    <a
-                                        href={projet.demo}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="inline-flex flex-1 items-center justify-center gap-2 rounded-[60px] border border-brand/40 bg-brand/10 px-6 py-4 text-sm font-medium text-brand transition hover:border-brand/70 hover:bg-brand/20"
-                                    >
-                                        <FaArrowRight /> {projet.telecharger ? 'Télécharger' : 'Voir la démo'}
-                                    </a>
-                                </div>
+                                {!projet.descriptionAuLieuGithub && (
+                                    <div className="px-5 pb-5 flex items-center gap-3">
+                                        <a
+                                            href={projet.github}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="inline-flex flex-1 items-center justify-center gap-2 rounded-[60px] border border-white/10 bg-white/5 px-6 py-4 text-sm font-medium text-white/80 transition hover:border-brand/50 hover:text-brand"
+                                        >
+                                            <FaGithub /> GitHub
+                                        </a>
+                                        <a
+                                            href={projet.demo}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="inline-flex flex-1 items-center justify-center gap-2 rounded-[60px] border border-brand/40 bg-brand/10 px-6 py-4 text-sm font-medium text-brand transition hover:border-brand/70 hover:bg-brand/20"
+                                        >
+                                            <FaArrowRight /> {projet.telecharger ? 'Télécharger' : 'Voir la démo'}
+                                        </a>
+                                    </div>
+                                )}
                             </motion.article>
                         ))}
                     </div>
@@ -95,7 +134,7 @@ function Projets() {
                 </div>
 
                 <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                    {projets.map((projet, index) => (
+                    {projetsAutres.map((projet, index) => (
                         <motion.article
                             key={projet.titre}
                             initial={{ opacity: 0, y: 30 }}
@@ -112,14 +151,15 @@ function Projets() {
                                     className="h-44 w-full object-cover"
                                 />
                                 <span className="absolute left-4 top-4 flex max-w-[calc(100%-2rem)] flex-wrap gap-1.5">
-                                    {projet.technologies.map((tech) => (
-                                        <span
-                                            key={tech}
-                                            className="rounded-[60px] border border-brand/50 bg-black px-3 py-1 text-[11px] font-medium text-white"
-                                        >
-                                            {tech}
-                                        </span>
-                                    ))}
+                                    {!projet.descriptionAuLieuGithub &&
+                                        projet.technologies.map((tech) => (
+                                            <span
+                                                key={tech}
+                                                className="rounded-[60px] border border-brand/50 bg-black px-3 py-1 text-[11px] font-medium text-white"
+                                            >
+                                                {tech}
+                                            </span>
+                                        ))}
                                 </span>
                                 <div className="absolute inset-0 bg-black/30 opacity-0 transition group-hover:opacity-100" />
                             </div>
@@ -128,29 +168,39 @@ function Projets() {
                                 <h3 className="text-lg font-bold leading-tight tracking-[-0.02em] text-white">
                                     {projet.titre}
                                 </h3>
-                                <p className="mt-2 line-clamp-2 text-sm leading-6 text-white/60">
-                                    {projet.description}
-                                </p>
+                                {!projet.descriptionAuLieuGithub && (
+                                    <p className="mt-2 line-clamp-2 text-sm leading-6 text-white/60">
+                                        {projet.description}
+                                    </p>
+                                )}
 
-                                <div className="mt-4 flex items-center gap-2">
-                                    <a
-                                        href={projet.github}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-white/80 transition hover:border-brand/50 hover:text-brand"
-                                    >
-                                        <FaGithub className="text-sm" /> GitHub
-                                    </a>
-                                    <a
-                                        href={projet.demo}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-brand/40 bg-brand/10 px-3 py-2 text-xs font-medium text-brand transition hover:border-brand/70 hover:bg-brand/20"
-                                    >
-                                        <FaArrowRight className="text-sm" />
-                                        {projet.telecharger ? 'Télécharger' : 'Voir la démo'}
-                                    </a>
-                                </div>
+                                {projet.descriptionAuLieuGithub ? (
+                                    <p className="mt-4 text-sm leading-6 text-white/70">
+                                        {projet.description}
+                                    </p>
+                                ) : (
+                                    <div className="mt-4 flex items-center gap-2">
+                                        <a
+                                            href={projet.github}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-white/80 transition hover:border-brand/50 hover:text-brand"
+                                        >
+                                            <FaGithub className="text-sm" /> GitHub
+                                        </a>
+                                        {projet.demo && (
+                                            <a
+                                                href={projet.demo}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-brand/40 bg-brand/10 px-3 py-2 text-xs font-medium text-brand transition hover:border-brand/70 hover:bg-brand/20"
+                                            >
+                                                <FaArrowRight className="text-sm" />
+                                                {projet.telecharger ? 'Télécharger' : 'Voir la démo'}
+                                            </a>
+                                        )}
+                                    </div>
+                                )}
                             </div>
                         </motion.article>
                     ))}

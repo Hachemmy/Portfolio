@@ -100,6 +100,7 @@ export const competences = [
 export const projets = [
     {
         titre: 'Storage Manager',
+        categorie: 'developpement',
         image:
             'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fstorage-manager-sigma.vercel.app?w=900',
         description: 'Application React de monitoring de stockage simulé avec une interface moderne et responsive. Login:hachejoven@gmail.com Password:PROJETREACT',
@@ -109,6 +110,7 @@ export const projets = [
     },
     {
         titre: "Flem'art",
+        categorie: 'developpement',
         image: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fflemart-frontend.onrender.com?w=900',
         description: "Flem'Art est une application web de gestion et de partage de projets de programmation avec des fonctionnalités sociales, d'apprentissage et de motivation.",
         technologies: ['React.js', 'TypeScript', 'Tailwind CSS', 'Express.js', 'MySQL', 'JWT', 'REST API'],
@@ -117,6 +119,7 @@ export const projets = [
     },
     {
         titre: 'Routage IP',
+        categorie: 'reseaux',
         image: process.env.PUBLIC_URL + '/images/RoutageIP.png',
         description:
             'Simulation de routage IP avec protocoles RIP et OSPF, démontrant la configuration et la gestion des réseaux.',
@@ -126,7 +129,41 @@ export const projets = [
         telecharger: true,
     },
     {
+        titre: 'Serveur en VM',
+        categorie: 'reseaux',
+        descriptionAuLieuGithub: true,
+        image: process.env.PUBLIC_URL + '/images/SSI.jpg',
+        description:
+            'Architecture de machines virtuelles : Router (OPNsense), Windows Server (AD DS, DNS et DHCP), Kali (Suricata IDS, Nmap et Hydra) et Ubuntu Server Web (Apache2).',
+        technologies: ['OPNsense', 'Windows Server', 'AD DS', 'DNS', 'DHCP', 'Kali', 'Suricata', 'Nmap', 'Hydra', 'Ubuntu Server', 'Apache2'],
+        github: 'https://github.com/Hachemmy/',
+        demo: '',
+    },
+    {
+        titre: 'Projet Service Réseaux',
+        categorie: 'reseaux',
+        descriptionAuLieuGithub: true,
+        image: process.env.PUBLIC_URL + '/images/ServiceReseaux.png',
+        description:
+            'Déploiement et configuration de services réseaux sur machine virtuelle : LDAP, Apache2/Nginx, Mail & SMTP, DNS, Grafana et Prometheus.',
+        technologies: ['LDAP', 'Apache2/Nginx', 'Mail', 'SMTP', 'DNS', 'Grafana', 'Prometheus'],
+        github: 'https://github.com/Hachemmy/',
+        demo: '',
+    },
+    {
+        titre: 'Youri',
+        categorie: 'reseaux',
+        descriptionAuLieuGithub: true,
+        image: process.env.PUBLIC_URL + '/images/Youri.png',
+        description:
+            'Assistant IA créé sur un Ubuntu Server stocké localement, avec DNS, Ollama, Apache2 et services associés.',
+        technologies: ['Ubuntu Server', 'Ollama', 'DNS', 'Apache2'],
+        github: 'https://github.com/Hachemmy/',
+        demo: '',
+    },
+    {
         titre: 'Messagerie Web',
+        categorie: 'developpement',
         image:
             'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmessagerie.infinityfree.me%2F?w=900',
         description: 'Système de messagerie web complet avec PHP et MySQL, offrant une interface utilisateur intuitive et des fonctionnalités de communication sécurisées.',
@@ -136,6 +173,7 @@ export const projets = [
     },
     {
         titre: 'Quiz-Madagascar',
+        categorie: 'developpement',
         image:
             'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fhachemmy.github.io%2FQuiz-Madagascar-de-Hachemmy%2F?w=900',
         description: 'Divetissement et apprentissage sur Madagascar avec un quiz interactif, responsive et animé.',
@@ -144,7 +182,17 @@ export const projets = [
         demo: 'https://hachemmy.github.io/Quiz-Madagascar-de-Hachemmy/',
     },
     {
+        titre: 'Feux de circulation',
+        categorie: 'developpement',
+        image: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fhachemmy.github.io%2Ffeux-de-circulation%2F?w=900',
+        description: 'Simulation interactive de feux de circulation en HTML, CSS et JavaScript.',
+        technologies: ['HTML5', 'CSS3', 'JavaScript'],
+        github: 'https://github.com/Hachemmy/feux-de-circulation',
+        demo: 'https://hachemmy.github.io/feux-de-circulation/',
+    },
+    {
         titre: 'Tic Tac Toe',
+        categorie: 'developpement',
         image: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fhachemmy.github.io%2FTIK-TAK-TOE-by-Hachemmy%2F?w=900',
         description: 'Jeu de Morpion interactif avec modes Joueur vs Joueur et Joueur vs Bot, incluant plusieurs niveaux de difficulté (Facile, Moyen, Difficile).',
         technologies: ['HTML5', 'CSS3', 'JavaScript'],
@@ -153,6 +201,7 @@ export const projets = [
     },
     {
         titre: 'Portfolio Personnel',
+        categorie: 'developpement',
         image: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fportfolio-hachemmy.vercel.app?w=900',
         description: 'Site vitrine personnel présentant mon profil, mes compétences et mes projets, conçu avec une interface moderne et responsive.',
         technologies: ['React', 'JavaScript', 'CSS', 'Tailwind CSS', 'Framer Motion'],
@@ -161,6 +210,7 @@ export const projets = [
     },
     {
         titre: 'CapJob & Help',
+        categorie: 'developpement',
         image: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fcapjobhelp.infinityfree.me%2F?w=900',
         description: 'Plateforme web CapJobHelp dédiée à l’accompagnement et à l’aide dans les démarches liées à la recherche d’emploi pour les personnes handicapées.',
         technologies: ['PHP', 'HTML', 'CSS', 'SQL', 'JavaScript'],
