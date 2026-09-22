@@ -7,7 +7,6 @@ import {
     experiencesProfessionnelles,
     formations,
     langues,
-    projets,
 } from '../data/donneesPortfolio';
 import SectionAnimee from './SectionAnimee';
 import TitreSection from './TitreSection';
@@ -292,7 +291,7 @@ function Statistiques() {
                 <div className="mt-16 grid grid-cols-2 gap-6 lg:grid-cols-4">
                     <CarteDetail
                         index={0}
-                        fin={projets.length}
+                        fin={19}
                         label="Projets réalisés"
                         type="projets"
                         vers="/projets"
