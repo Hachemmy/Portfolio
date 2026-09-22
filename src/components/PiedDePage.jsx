@@ -34,7 +34,7 @@ function PiedDePage() {
                         <Link to="/" className="inline-flex items-center gap-3">
                             <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-brand/40 bg-brand/10 p-1">
                                 <img
-                                    src={process.env.PUBLIC_URL + '/assets/Hachemmy.jpg'}
+                                    src={process.env.PUBLIC_URL + '/assets/Hachemmy.png'}
                                     alt="Logo"
                                     className="h-full w-full rounded-lg object-cover"
                                 />
@@ -43,10 +43,6 @@ function PiedDePage() {
                                 Mr HACHEMMY
                             </span>
                         </Link>
-                        <p className="mt-5 text-sm leading-6 text-white/50">
-                            Profil technique, création soignée et résultat
-                            fiable.
-                        </p>
                         <div className="mt-6 flex gap-3">
                             {reseaux.map((item) => (
                                 <a

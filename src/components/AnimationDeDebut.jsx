@@ -7,7 +7,7 @@ const TRACES_H = [
     { d: 'M25,60 L95,60', delai: 0.28 },
 ];
 
-const ACHES = 'achemmy'.split('');
+const ACHEMMY = 'achemmy'.split('');
 
 function AnimationDeDebut({ onTermine }) {
     const [etape, setEtape] = useState(0);
@@ -86,16 +86,17 @@ function AnimationDeDebut({ onTermine }) {
 
     return (
         <motion.div
-            className="fixed inset-0 z-[80] flex items-center justify-center bg-black"
+            className="fixed inset-0 z-[80] flex items-center justify-center"
+            style={{ backgroundColor: '#050505' }}
             initial={{ opacity: 1 }}
             animate={{ opacity: etape >= 5 ? 0 : 1 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-            <div className="flex items-center justify-center gap-2 sm:gap-3">
-                {/* Logo : apparaît en premier, dessine le H en se déplaçant */}
+            <div className="flex items-center justify-center gap-1 sm:gap-3">
+                {/* Logo : apparaît en premier, joue le rôle du stylo qui écrit "achemmy" */}
                 <motion.img
                     ref={logoRef}
-                    src={process.env.PUBLIC_URL + '/assets/Hachemmy.jpg'}
+                    src={process.env.PUBLIC_URL + '/assets/Hachemmy.png'}
                     alt="Logo Hachemmy"
                     className="h-16 w-16 rounded-full border border-white/10 object-cover sm:h-20 sm:w-20"
                     initial={{ opacity: 0, scale: 0 }}
@@ -130,45 +131,50 @@ function AnimationDeDebut({ onTermine }) {
                     }}
                 />
 
-                {/* H stylisé tracé par le logo */}
-                <motion.svg
-                    ref={hRef}
-                    viewBox="0 0 120 120"
-                    className="h-20 w-20 sm:h-28 sm:w-28"
-                    fill="none"
-                    animate={{ opacity: etape >= 4 ? 0 : 1 }}
-                    transition={{ duration: 0.35 }}
-                    style={{ filter: 'drop-shadow(0 0 16px rgba(174,208,252,0.55))' }}
-                >
-                    {TRACES_H.map((trace) => (
-                        <motion.path
-                            key={trace.d}
-                            d={trace.d}
-                            stroke="#aed0fc"
-                            strokeWidth="18"
-                            strokeLinecap="round"
-                            pathLength={1}
-                            style={{ strokeDasharray: 1 }}
-                            initial={{ strokeDashoffset: 1 }}
-                            animate={{ strokeDashoffset: etape >= 2 ? 0 : 1 }}
-                            transition={{
-                                duration: 0.5,
-                                delay: etape >= 2 ? trace.delai : 0,
-                                ease: 'easeInOut',
-                            }}
-                        />
-                    ))}
-                </motion.svg>
+                {/* H + achemmy alignés sur la même ligne de base (pas centrés sur le H) */}
+                <span className="flex items-baseline gap-1 sm:gap-3">
+                    {/* H stylisé tracé par le logo */}
+                    <motion.svg
+                        ref={hRef}
+                        viewBox="0 0 120 120"
+                        className="h-20 w-20 sm:h-28 sm:w-28"
+                        fill="none"
+                        animate={{ opacity: etape >= 4 ? 0 : 1 }}
+                        transition={{ duration: 0.35 }}
+                        style={{ filter: 'drop-shadow(0 0 16px rgba(174,208,252,0.55))' }}
+                    >
+                        {TRACES_H.map((trace) => (
+                            <motion.path
+                                key={trace.d}
+                                d={trace.d}
+                                stroke="#aed0fc"
+                                strokeWidth="18"
+                                strokeLinecap="round"
+                                pathLength={1}
+                                style={{ strokeDasharray: 1 }}
+                                initial={{ strokeDashoffset: 1 }}
+                                animate={{ strokeDashoffset: etape >= 2 ? 0 : 1 }}
+                                transition={{
+                                    duration: 0.5,
+                                    delay: etape >= 2 ? trace.delai : 0,
+                                    ease: 'easeInOut',
+                                }}
+                            />
+                        ))}
+                    </motion.svg>
 
-                {/* "achemmy" s'écrit lettre par lettre, comme à la main */}
-                <motion.span
-                    ref={motRef}
-                    className="-ml-3 flex items-center text-[clamp(30px,6.5vw,52px)] font-black leading-none tracking-[-0.02em] sm:-ml-4"
-                    style={{ fontFamily: "'Unbounded', system-ui, sans-serif" }}
+                    {/* "achemmy" : le logo écrit le mot à la main, lettre par lettre */}
+                    <motion.span
+                        ref={motRef}
+                        className="-ml-2 flex -translate-y-[0.2em] items-center text-[clamp(24px,6vw,54px)] font-bold leading-none sm:-ml-4"
+                    style={{
+                        fontFamily: "'Syncopate', system-ui, sans-serif",
+                        filter: 'drop-shadow(0 4px 10px rgba(51,51,51,0.9)) drop-shadow(0 0 24px rgba(217,217,217,0.18))',
+                    }}
                     animate={{ opacity: etape >= 3 && etape < 4 ? 1 : 0 }}
                     transition={{ duration: 0.05 }}
                 >
-                    {ACHES.map((lettre, index) => {
+                    {ACHEMMY.map((lettre, index) => {
                         const enCours = etape >= 3 && etape < 4;
                         const delai = enCours ? 0.04 + index * 0.14 : 0;
                         const duree = 0.45;
@@ -178,15 +184,15 @@ function AnimationDeDebut({ onTermine }) {
                                 <span
                                     aria-hidden="true"
                                     className="absolute inset-0 select-none"
-                                    style={{ color: 'rgba(255,255,255,0.16)' }}
+                                    style={{ color: 'rgba(217,217,217,0.16)' }}
                                 >
                                     {etape >= 2 ? lettre : ''}
                                 </span>
-                                {/* lettre dévoilée par un balayage gauche → droite */}
+                                {/* lettre dévoilée par un balayage gauche → droite, comme la main du logo */}
                                 <motion.span
                                     className="relative z-10 inline-block"
                                     style={{
-                                        backgroundImage: 'linear-gradient(135deg, #aed0fc, #ffffff 48%, #aed0fc)',
+                                        backgroundImage: 'linear-gradient(180deg, #f4f4f4 0%, #d9d9d9 45%, #b5b5b5 100%)',
                                         WebkitBackgroundClip: 'text',
                                         backgroundClip: 'text',
                                         color: 'transparent',
@@ -208,6 +214,7 @@ function AnimationDeDebut({ onTermine }) {
                         );
                     })}
                 </motion.span>
+                </span>
             </div>
         </motion.div>
     );

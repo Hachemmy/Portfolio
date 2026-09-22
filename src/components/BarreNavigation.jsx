@@ -66,16 +66,11 @@ function BarreNavigation() {
                         style={{ filter: 'drop-shadow(0px -4px 23px rgba(0,0,0,0.25)) drop-shadow(0px 24px 23px rgba(0,0,0,0.25))' }}
                     >
                         <img
-                            src={process.env.PUBLIC_URL + '/assets/Hachemmy.jpg'}
+                            src={process.env.PUBLIC_URL + '/assets/Hachemmy.png'}
                             alt="Logo Hachemmy"
                             className="h-full w-full rounded-full object-cover"
                         />
                     </Link>
-
-                    {/* Nom affiché côté mobile, juste après le logo */}
-                    <span className="flex-1 text-left text-xl font-bold tracking-[-0.02em] whitespace-nowrap lg:hidden">
-                        <span className="text-brand">Mr</span> <span className="text-white">Hachemmy</span>
-                    </span>
 
                     {/* Groupe de liens en pilules avec icônes 20px */}
                     <nav className="hidden flex-1 items-center justify-center gap-3 xl:flex">
