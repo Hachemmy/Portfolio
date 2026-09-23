@@ -56,7 +56,7 @@ function Accueil() {
                     >
                         Hachemmy Jovenno{' '}
                         <span
-                            className="font-quantum text-brand block max-sm:text-[clamp(1.25rem,7.5vw,2.25rem)] max-sm:leading-[1.3] max-sm:tracking-[0.05em] sm:inline sm:tracking-[0.1em]"
+                            className="font-quantum text-brand block max-sm:text-[clamp(1.25rem,7.5vw,2.25rem)] max-sm:leading-[1.15] max-sm:tracking-[0.05em] sm:inline sm:tracking-[0.1em]"
                             style={{ textTransform: 'uppercase' }}
                         >
                             RAZAFINTIAMASY

@@ -36,7 +36,7 @@ function Services() {
                     description="Trois domaines complémentaires, une même exigence : un travail sérieux et des résultats fiables."
                 />
 
-                <p className="mt-14 text-center text-xl font-semibold uppercase tracking-[0.3em] text-brand">
+                <p className="font-quantum mt-14 text-center text-3xl font-normal uppercase tracking-[0.3em] text-brand">
                     Mes armes
                 </p>
 
