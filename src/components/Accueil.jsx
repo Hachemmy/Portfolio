@@ -52,14 +52,20 @@ function Accueil() {
 
                     <motion.h1
                         variants={elementVariants}
-                        className="mt-5 text-4xl font-bold leading-[1.1] tracking-[-0.04em] text-white sm:text-6xl sm:leading-[1.1] lg:text-[72px]"
+                        className="font-aladin mt-8 text-4xl font-normal leading-[1.25] tracking-[0.06em] text-white sm:text-6xl sm:leading-[1.25] lg:text-[72px]"
                     >
-                        Hachemmy Jovenno <span className="text-brand">RAZAFINTIAMASY</span>
+                        Hachemmy Jovenno{' '}
+                        <span
+                            className="font-quantum text-brand block max-sm:text-[clamp(1.25rem,7.5vw,2.25rem)] max-sm:leading-[1.3] max-sm:tracking-[0.05em] sm:inline sm:tracking-[0.1em]"
+                            style={{ textTransform: 'uppercase' }}
+                        >
+                            RAZAFINTIAMASY
+                        </span>
                     </motion.h1>
 
                     <motion.p
                         variants={elementVariants}
-                        className="mt-6 text-xl font-medium leading-8 text-brand sm:text-2xl"
+                        className="font-aladin mt-10 text-2xl font-normal leading-10 tracking-[0.05em] text-brand sm:text-3xl"
                     >
                         {personalInfo.titre}
                     </motion.p>
