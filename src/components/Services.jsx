@@ -3,6 +3,7 @@ import { competencesDetaillees } from '../data/donneesPortfolio';
 import SectionAnimee from './SectionAnimee';
 import TitreSection from './TitreSection';
 import iconesCompetences from './iconesCompetences';
+import { useLangue } from '../context/ContexteLangue';
 
 const piliers = [
     {
@@ -20,6 +21,7 @@ const piliers = [
 ];
 
 function Services() {
+    const { t } = useLangue();
     return (
         <SectionAnimee
             id="services"
@@ -31,13 +33,13 @@ function Services() {
             <div className="relative mx-auto max-w-[1130px]">
 
                 <TitreSection
-                    etiquette="Services"
-                    titre="Mes trois piliers techniques"
-                    description="Trois domaines complémentaires, une même exigence : un travail sérieux et des résultats fiables."
+                    etiquette={t('Services')}
+                    titre={t('Mes trois piliers techniques')}
+                    description={t('Trois domaines complémentaires, une même exigence : un travail sérieux et des résultats fiables.')}
                 />
 
                 <p className="font-quantum mt-14 text-center text-3xl font-normal uppercase tracking-[0.3em] text-brand">
-                    Mes armes
+                    {t('Mes armes')}
                 </p>
 
                 <motion.div
@@ -57,7 +59,7 @@ function Services() {
                             className="relative flex flex-col items-center gap-6 px-6 py-10 text-center"
                         >
                             <h3 className="text-2xl font-bold tracking-[-0.04em] text-white">
-                                {pilier.nom}
+                                {t(pilier.nom)}
                             </h3>
 
                             <div className="flex items-baseline gap-2">
@@ -65,13 +67,13 @@ function Services() {
                                     {pilier.elements.length}
                                 </span>
                                 <span className="text-lg text-white/50">
-                                    compétences
+                                    {t('compétences')}
                                 </span>
                             </div>
 
                             <div className="w-full border-t border-white/10 pt-6">
                                 <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-brand">
-                                    Inclus
+                                    {t('Inclus')}
                                 </p>
                                 <div className="flex flex-wrap justify-center gap-2">
                                     {pilier.elements.map((element) => {

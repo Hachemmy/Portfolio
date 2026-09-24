@@ -5,8 +5,10 @@ import { detailsContact } from '../data/donneesPortfolio';
 import SectionAnimee from './SectionAnimee';
 import TitreSection from './TitreSection';
 import emailjs from '@emailjs/browser';
+import { useLangue } from '../context/ContexteLangue';
 
 function Contact() {
+    const { t } = useLangue();
     const [donneesFormulaire, setDonneesFormulaire] = useState({
         nom: '',
         email: '',
@@ -32,7 +34,7 @@ function Contact() {
             !process.env.REACT_APP_EMAILJS_PUBLIC_KEY
         ) {
             setEtatMessage(
-                "Le formulaire est prêt pour EmailJS. Ajoutez vos identifiants dans les variables d'environnement."
+                t("Le formulaire est prêt pour EmailJS. Ajoutez vos identifiants dans les variables d'environnement.")
             );
             return;
         }
@@ -45,7 +47,7 @@ function Contact() {
                 process.env.REACT_APP_EMAILJS_PUBLIC_KEY
             )
             .then(() => {
-                setEtatMessage('Message envoyé avec succès.');
+                setEtatMessage(t('Message envoyé avec succès.'));
                 setDonneesFormulaire({
                     nom: '',
                     email: '',
@@ -55,7 +57,7 @@ function Contact() {
             })
             .catch(() => {
                 setEtatMessage(
-                    "Une erreur est survenue. Veuillez réessayer plus tard."
+                    t('Une erreur est survenue. Veuillez réessayer plus tard.')
                 );
             });
     };
@@ -73,9 +75,9 @@ function Contact() {
             <div className="relative mx-auto max-w-[1480px]">
 
                 <TitreSection
-                    etiquette="Contact"
-                    titre="Prêt à créer quelque chose d’exceptionnel ?"
-                    description="Je suis ouvert aux opportunités professionnelles, aux collaborations et aux projets ambitieux."
+                    etiquette={t('Contact')}
+                    titre={t('Prêt à créer quelque chose d’exceptionnel ?')}
+                    description={t('Je suis ouvert aux opportunités professionnelles, aux collaborations et aux projets ambitieux.')}
                 />
 
                 <div className="mt-16 grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
@@ -128,7 +130,7 @@ function Contact() {
                                     <div>
 
                                         <p className="text-sm uppercase tracking-[0.24em] text-white/50">
-                                            {detail.etiquette}
+                                            {t(detail.etiquette)}
                                         </p>
 
                                         <p className="mt-1 text-base text-white">
@@ -160,7 +162,7 @@ function Contact() {
 
                             <label className="text-sm text-white/70">
 
-                                Nom
+                                {t('Nom')}
 
                                 <input
                                     type="text"
@@ -192,7 +194,7 @@ function Contact() {
 
                         <label className="mt-5 block text-sm text-white/70">
 
-                            Sujet
+                            {t('Sujet')}
 
                             <input
                                 type="text"
@@ -207,7 +209,7 @@ function Contact() {
 
                         <label className="mt-5 block text-sm text-white/70">
 
-                            Message
+                            {t('Message')}
 
                             <textarea
                                 rows="6"
@@ -225,7 +227,7 @@ function Contact() {
                                 type="submit"
                                 className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-white transition hover:border-white hover:bg-white hover:text-black"
                             >
-                                Envoyer <FaArrowRight />
+                                {t('Envoyer')} <FaArrowRight />
                             </button>
                         </div>
 

@@ -8,6 +8,7 @@ import {
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { detailsContact } from '../data/donneesPortfolio';
+import { useLangue } from '../context/ContexteLangue';
 
 const iconesContact = {
     Email: <FaEnvelope />,
@@ -23,6 +24,7 @@ const reseaux = [
 ];
 
 function PiedDePage() {
+    const { t } = useLangue();
     return (
         <footer className="border-t border-white/10 px-6 pt-14 pb-8 lg:px-8">
             <div className="mx-auto max-w-[1480px]">
@@ -62,7 +64,7 @@ function PiedDePage() {
                     {/* Contact */}
                     <div>
                         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/60">
-                            Contact
+                            {t('Contact')}
                         </p>
                         <ul className="mt-6 space-y-3">
                             {detailsContact.map((detail) => (
@@ -84,17 +86,17 @@ function PiedDePage() {
                     {/* Position */}
                     <div>
                         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/60">
-                            Profil
+                            {t('Profil')}
                         </p>
                         <ul className="mt-6 space-y-3">
                             <li className="text-sm text-white/50">
-                                Administration Systèmes & Réseaux
+                                {t('Administration Systèmes & Réseaux')}
                             </li>
                             <li className="text-sm text-white/50">
-                                Développeur Full Stack
+                                {t('Développeur Full Stack')}
                             </li>
                             <li className="text-sm text-white/50">
-                                Systèmes embarqués & IoT
+                                {t('Systèmes embarqués & IoT')}
                             </li>
                         </ul>
                     </div>
@@ -103,8 +105,7 @@ function PiedDePage() {
 
                 <div className="mt-12 border-t border-white/10 pt-6">
                     <p className="text-sm text-white/40">
-                        © 2026 Hachemmy Jovenno. Professionnalisme est le
-                        meilleur chemin.
+                        {t('© 2026 Hachemmy Jovenno. Professionnalisme est le meilleur chemin.')}
                     </p>
                 </div>
 

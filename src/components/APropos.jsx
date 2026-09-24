@@ -4,12 +4,14 @@ import { FaArrowRight } from 'react-icons/fa';
 import { elementsAPropos, personalInfo, pointsFortAccueil } from '../data/donneesPortfolio';
 import SectionAnimee from './SectionAnimee';
 import TitreSection from './TitreSection';
+import { useLangue } from '../context/ContexteLangue';
 
 function numeleroComplet(index) {
     return String(index + 1).padStart(3, '0');
 }
 
 function APropos() {
+    const { t } = useLangue();
     return (
         <SectionAnimee
             id="a-propos"
@@ -21,9 +23,9 @@ function APropos() {
             <div className="relative mx-auto max-w-[1480px]">
 
                 <TitreSection
-                    etiquette="À propos"
-                    titre="Un profil technique, créatif et orienté résultat"
-                    description="Je combine une forte base en informatique, un sens du design soigné et une motivation réelle pour créer des expériences web modernes."
+                    etiquette={t('À propos')}
+                    titre={t('Un profil technique, créatif et orienté résultat')}
+                    description={t('Je combine une forte base en informatique, un sens du design soigné et une motivation réelle pour créer des expériences web modernes.')}
                 />
 
                 <div className="mt-16 grid gap-16 lg:grid-cols-2 lg:gap-16">
@@ -55,14 +57,14 @@ function APropos() {
                                         <div className="flex-1">
                                             <div className="flex items-center justify-between gap-4">
                                                 <h3 className="text-xl font-semibold tracking-[-0.02em] text-white">
-                                                    {element.titre}
+                                                    {t(element.titre)}
                                                 </h3>
                                                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-brand/30 bg-brand/10 text-brand transition group-hover:rotate-6 group-hover:border-brand/70">
                                                     <Icone />
                                                 </div>
                                             </div>
                                             <p className="mt-2 text-base leading-7 text-white/70">
-                                                {element.corps}
+                                                {t(element.corps)}
                                             </p>
                                         </div>
                                     </motion.article>
@@ -82,7 +84,7 @@ function APropos() {
                         {/* Aperçu portrait : occupe toute la hauteur restante */}
                         <div className="relative min-h-[240px] w-full flex-1 lg:min-h-0">
                             <img
-                                src={process.env.PUBLIC_URL + '/assets/Hachemmy.JPG'}
+                                src={process.env.PUBLIC_URL + '/assets/Hache.png'}
                                 alt={personalInfo.nom}
                                 className="absolute inset-0 h-full w-full object-cover object-center"
                             />
@@ -91,14 +93,14 @@ function APropos() {
                             {/* Pastille verre flottante "Mon profil" */}
                             <div className="carte-verre-forte absolute left-6 top-0.5 rounded-lg px-5 py-2.5 sm:top-12">
                                 <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand">
-                                    Mon profil
+                                    {t('Mon profil')}
                                 </p>
                             </div>
 
                             {/* Pastille du titre */}
                             <div className="absolute bottom-6 left-1/2 w-[calc(100%-3rem)] -translate-x-1/2">
                                 <p className="rounded-full border border-white/10 bg-black/50 px-5 py-2.5 text-center text-sm font-medium text-white backdrop-blur-md">
-                                    {personalInfo.titre}
+                                    {t(personalInfo.titre)}
                                 </p>
                             </div>
                         </div>
@@ -110,7 +112,7 @@ function APropos() {
                             </p>
 
                             <p className="mt-4 text-sm leading-6 text-white/70 sm:mt-5 sm:text-base sm:leading-7">
-                                {personalInfo.aPropos}
+                                {t(personalInfo.aPropos)}
                             </p>
 
                             <div className="mt-6 sm:mt-9">
@@ -118,7 +120,7 @@ function APropos() {
                                     to="/contact"
                                     className="inline-flex items-center gap-2 rounded-full border border-brand/40 bg-brand/10 px-6 py-3.5 text-sm font-medium text-brand transition hover:border-brand/70 hover:bg-brand/20 sm:px-8 sm:py-4 sm:text-base"
                                 >
-                                    Discuter d’un projet <FaArrowRight />
+                                    {t('Discuter d’un projet')} <FaArrowRight />
                                 </Link>
                             </div>
                         </div>
@@ -133,7 +135,7 @@ function APropos() {
                             key={pointFort}
                             className="rounded-[60px] border border-brand/50 bg-black/[0.5] px-8 py-6 text-lg font-medium text-white backdrop-blur-[50px] transition hover:border-brand hover:text-brand sm:px-10"
                         >
-                            {pointFort}
+{t(pointFort)}
                         </span>
                     ))}
                 </div>

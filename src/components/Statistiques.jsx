@@ -10,6 +10,7 @@ import {
 } from '../data/donneesPortfolio';
 import SectionAnimee from './SectionAnimee';
 import TitreSection from './TitreSection';
+import { useLangue } from '../context/ContexteLangue';
 
 const languesAvecDrapeaux = [
     { nom: 'Malagasy', drapeau: '🇲🇬' },
@@ -38,6 +39,7 @@ function Compteur({ fin }) {
 
 function CarteLangues({ index }) {
     const [retourne, setRetourne] = useState(false);
+    const { t } = useLangue();
 
     return (
         <motion.div
@@ -49,7 +51,7 @@ function CarteLangues({ index }) {
         >
             <button
                 type="button"
-                aria-label="Voir les langues parlées"
+                aria-label={t('Voir les langues parlées')}
                 onClick={() => setRetourne((precedent) => !precedent)}
                 className="block h-full w-full text-left"
                 style={{ perspective: '1200px', WebkitPerspective: '1200px' }}
@@ -65,7 +67,7 @@ function CarteLangues({ index }) {
                         <Compteur fin={langues.length} />
                     </span>
                     <span className="mt-3 text-lg text-white/60">
-                        Langues parlées
+                        {t('Langues parlées')}
                     </span>
                 </span>
 
@@ -74,7 +76,7 @@ function CarteLangues({ index }) {
                     className="flip-face flip-face-arriere carte-verre-forte absolute inset-0 flex w-full flex-col justify-center gap-3 p-5 lg:p-8"
                 >
                     <span className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-brand">
-                        Langues parlées
+                        {t('Langues parlées')}
                     </span>
                     <span className="grid grid-cols-2 gap-2">
                         {languesAvecDrapeaux.map((langue) => (
@@ -97,6 +99,7 @@ function CarteLangues({ index }) {
 }
 
 function CarteDetail({ index, fin, label, type, surOuverture, vers }) {
+    const { t } = useLangue();
     const contenu = (
         <motion.button
             type="button"
@@ -107,7 +110,7 @@ function CarteDetail({ index, fin, label, type, surOuverture, vers }) {
             transition={{ duration: 0.55, delay: index * 0.08, ease: 'easeOut' }}
             whileHover={{ y: -6 }}
             className="carte-verre-forte block h-full w-full p-8 text-left lg:p-10"
-            aria-label={`Détail : ${label}`}
+            aria-label={`${t('Détail')} : ${label}`}
         >
             <p className="text-5xl font-bold tracking-[-0.04em] text-white lg:text-[56px]">
                 <Compteur fin={fin} />
@@ -129,6 +132,7 @@ function CarteDetail({ index, fin, label, type, surOuverture, vers }) {
 }
 
 function FenetreDetails({ type, surFermer }) {
+    const { t } = useLangue();
     useEffect(() => {
         document.body.style.overflow = 'hidden';
         const gestionEchap = (e) => {
@@ -144,8 +148,8 @@ function FenetreDetails({ type, surFermer }) {
     const estFormation = type === 'formation';
     const donnees = estFormation ? formations : experiencesProfessionnelles;
     const etiquette = estFormation
-        ? 'Formations & certifications'
-        : 'Expériences & challenges';
+        ? t('Formations & certifications')
+        : t('Expériences & challenges');
 
     return createPortal(
         <motion.div
@@ -167,7 +171,7 @@ function FenetreDetails({ type, surFermer }) {
                     <div className="flex items-center justify-between gap-4 border-b border-white/10 px-7 py-5 sm:px-10">
                         <div>
                             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand">
-                                Détail
+                                {t('Détail')}
                             </p>
                             <h3 className="mt-1 text-2xl font-bold tracking-[-0.03em] text-white sm:text-3xl">
                                 {etiquette}
@@ -176,7 +180,7 @@ function FenetreDetails({ type, surFermer }) {
                         <button
                             type="button"
                             onClick={surFermer}
-                            aria-label="Fermer"
+                            aria-label={t('Fermer')}
                             className="shrink-0 rounded-full border border-white/10 bg-white/5 p-3 text-white transition hover:border-brand/50 hover:text-brand"
                         >
                             <FaTimes />
@@ -185,7 +189,7 @@ function FenetreDetails({ type, surFermer }) {
 
                     <div className="space-y-4 px-5 py-6 sm:px-10 sm:py-8">
                         {donnees.length === 0 && (
-                            <p className="text-white/60">Aucune donnée.</p>
+                            <p className="text-white/60">{t('Aucune donnée.')}</p>
                         )}
 
                         {!estFormation &&
@@ -201,7 +205,7 @@ function FenetreDetails({ type, surFermer }) {
                                         {element.date}
                                     </span>
                                     <h4 className="mt-3 text-xl font-bold tracking-[-0.02em] text-white">
-                                        {element.poste}
+                                        {t(element.poste)}
                                     </h4>
                                     {element.structure && (
                                         <p className="mt-1.5 flex items-center gap-2 text-sm font-medium text-white/60">
@@ -211,7 +215,7 @@ function FenetreDetails({ type, surFermer }) {
                                     )}
                                     {element.details && (
                                         <p className="mt-3 text-sm leading-6 text-white/70">
-                                            {element.details}
+                                            {t(element.details)}
                                         </p>
                                     )}
                                 </motion.div>
@@ -230,7 +234,7 @@ function FenetreDetails({ type, surFermer }) {
                                         {element.periode}
                                     </span>
                                     <h4 className="mt-3 text-xl font-bold tracking-[-0.02em] text-white">
-                                        {element.titre}
+                                        {t(element.titre)}
                                     </h4>
                                     <p className="mt-1.5 flex items-center gap-2 text-sm font-medium text-white/60">
                                         <FaBuilding className="shrink-0 text-brand" />
@@ -238,12 +242,12 @@ function FenetreDetails({ type, surFermer }) {
                                     </p>
                                     {(element.mention || element.niveau) && (
                                         <p className="mt-1.5 text-sm font-semibold text-brand">
-                                            {element.mention || element.niveau}
+                                            {t(element.mention || element.niveau)}
                                         </p>
                                     )}
                                     {element.details && (
                                         <p className="mt-3 text-sm leading-6 text-white/70">
-                                            {element.details}
+                                            {t(element.details)}
                                         </p>
                                     )}
                                 </motion.div>
@@ -258,6 +262,7 @@ function FenetreDetails({ type, surFermer }) {
 
 function Statistiques() {
     const [fenetreOuverte, setFenetreOuverte] = useState(null);
+    const { t } = useLangue();
 
     const carteEntiere = (index, fin, label, type, vers) =>
         type === 'langues' ? (
@@ -283,24 +288,24 @@ function Statistiques() {
             <div className="relative mx-auto max-w-[1480px]">
 
                 <TitreSection
-                    etiquette="Chiffres"
-                    titre="Des résultats concrets et mesurables"
-                    description="Des projets livrés, des expériences cumulées et une curiosité qui ne s’arrête jamais."
+                    etiquette={t('Chiffres')}
+                    titre={t('Des résultats concrets et mesurables')}
+                    description={t('Des projets livrés, des expériences cumulées et une curiosité qui ne s’arrête jamais.')}
                 />
 
                 <div className="mt-16 grid grid-cols-2 gap-6 lg:grid-cols-4">
                     <CarteDetail
                         index={0}
                         fin={19}
-                        label="Projets réalisés"
+                        label={t('Projets réalisés')}
                         type="projets"
                         vers="/projets"
                         surOuverture={setFenetreOuverte}
                     />
 
-                    {carteEntiere(1, experiencesProfessionnelles.length, 'Expériences & challenges', 'experience')}
-                    {carteEntiere(2, formations.length, 'Formations & certifications', 'formation')}
-                    {carteEntiere(3, langues.length, 'Langues parlées', 'langues')}
+                    {carteEntiere(1, experiencesProfessionnelles.length, t('Expériences & challenges'), 'experience')}
+                    {carteEntiere(2, formations.length, t('Formations & certifications'), 'formation')}
+                    {carteEntiere(3, langues.length, t('Langues parlées'), 'langues')}
                 </div>
 
             </div>

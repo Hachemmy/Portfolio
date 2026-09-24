@@ -4,8 +4,9 @@ import TitreSection from './TitreSection';
 import BandeauTechnologies from './BandeauTechnologies';
 import iconesCompetences from './iconesCompetences';
 import { competencesDetaillees } from '../data/donneesPortfolio';
+import { useLangue } from '../context/ContexteLangue';
 
-const etapesCompetences = [
+const piliersCompetences = [
     {
         titre: 'Langages & Framework',
         elements: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'SQL', 'C++', 'Shell', 'Python', 'C#', 'Java', 'React.js', 'Tailwind CSS'],
@@ -21,6 +22,7 @@ const etapesCompetences = [
 ];
 
 function Competences() {
+    const { t } = useLangue();
     return (
         <SectionAnimee
             id="competences"
@@ -35,13 +37,13 @@ function Competences() {
                     {/* Colonne gauche : étapes numérotées */}
                     <div>
                         <TitreSection
-                            etiquette="Compétences"
-                            titre="Un socle technique solide, moderne et polyvalent"
-                            description="Je développe avec des technologies récentes, tout en gardant une approche claire, durable et orientée performance."
+                            etiquette={t('Compétences')}
+                            titre={t('Un socle technique solide, moderne et polyvalent')}
+                            description={t('Je développe avec des technologies récentes, tout en gardant une approche claire, durable et orientée performance.')}
                         />
 
                         <div className="mt-16 space-y-12">
-                            {etapesCompetences.map((etape, index) => (
+                            {piliersCompetences.map((etape, index) => (
                                 <motion.div
                                     key={etape.titre}
                                     initial={{ opacity: 0, y: 30 }}
@@ -56,7 +58,7 @@ function Competences() {
 
                                     <div className="border-t border-white/20 pt-6">
                                         <h3 className="text-2xl font-bold tracking-[-0.04em] text-white sm:text-3xl">
-                                            {etape.titre}
+                                            {t(etape.titre)}
                                         </h3>
 
                                         <div className="mt-5 flex flex-wrap gap-2.5">
@@ -92,14 +94,14 @@ function Competences() {
                         <div className="carte-verre-forte relative flex rotate-2 flex-col rounded-[20px] p-4 transition-transform duration-500 hover:rotate-0">
                             <img
                                 src={process.env.PUBLIC_URL + '/assets/HC.png'}
-                                alt="Portrait"
+                                alt={t('Portrait')}
                                 className="w-full min-h-0 flex-1 rounded-[16px] object-cover"
                             />
                         </div>
 
                         <div className="carte-verre-forte absolute bottom-10 left-4 rounded-lg px-6 py-3 sm:left-6">
                             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand">
-                                Compétences
+                                {t('Compétences')}
                             </p>
                         </div>
                     </motion.div>

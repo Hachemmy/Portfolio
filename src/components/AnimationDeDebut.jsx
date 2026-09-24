@@ -98,7 +98,7 @@ function AnimationDeDebut({ onTermine }) {
                     ref={logoRef}
                     src={process.env.PUBLIC_URL + '/assets/Hachemmy.png'}
                     alt="Logo Hachemmy"
-                    className="h-16 w-16 rounded-full border border-white/10 object-cover sm:h-20 sm:w-20"
+                    className="h-16 w-16 rounded-full object-cover sm:h-20 sm:w-20"
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{
                         opacity: etape >= 1 ? 1 : 0,

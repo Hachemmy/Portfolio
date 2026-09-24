@@ -8,8 +8,10 @@ import {
 
 import SectionAnimee from './SectionAnimee';
 import TitreSection from './TitreSection';
+import { useLangue } from '../context/ContexteLangue';
 
 function Parcours() {
+    const { t } = useLangue();
 
     const experiences =
         experiencesProfessionnelles && experiencesProfessionnelles.length > 0
@@ -27,9 +29,9 @@ function Parcours() {
             <div className="relative mx-auto max-w-[1480px]">
 
                 <TitreSection
-                    etiquette="Expérience"
-                    titre="Une progression orientée apprentissage, innovation et qualité"
-                    description="Mon parcours se construit autour de projets concrets, d’une curiosité technique forte et d’une volonté constante d’aller plus loin."
+                    etiquette={t('Expérience')}
+                    titre={t('Une progression orientée apprentissage, innovation et qualité')}
+                    description={t('Mon parcours se construit autour de projets concrets, d’une curiosité technique forte et d’une volonté constante d’aller plus loin.')}
                 />
 
 
@@ -112,19 +114,19 @@ function Parcours() {
                                         </span>
 
                                         <h3 className="mt-4 text-2xl font-bold tracking-[-0.03em] text-white">
-                                            {libelle}
+                                            {t(libelle)}
                                         </h3>
 
                                         {structure && (
                                             <p className="mt-2 flex items-center gap-2 text-sm font-medium text-white/60">
                                                 <FaBuilding className="shrink-0 text-brand" />
-                                                {structure}
+                                                {t(structure)}
                                             </p>
                                         )}
 
                                         {description && (
                                             <p className="mt-4 text-sm leading-7 text-white/70">
-                                                {description}
+                                                {t(description)}
                                             </p>
                                         )}
 
@@ -149,9 +151,9 @@ function Parcours() {
                         <div className="mt-24">
 
                             <TitreSection
-                                etiquette="Formation"
-                                titre="Un parcours académique solide et diversifié"
-                                description="Des bases théoriques renforcées par des certifications et des expériences complémentaires."
+                                etiquette={t('Formation')}
+                                titre={t('Un parcours académique solide et diversifié')}
+                                description={t('Des bases théoriques renforcées par des certifications et des expériences complémentaires.')}
                             />
 
                             <div className="relative mx-auto mt-16 max-w-4xl">
@@ -221,7 +223,7 @@ function Parcours() {
                                                     </span>
 
                                                     <h3 className="mt-4 text-2xl font-bold tracking-[-0.03em] text-white">
-                                                        {element.titre}
+                                                        {t(element.titre)}
                                                     </h3>
 
                                                     <p className="mt-2 flex items-center gap-2 text-sm font-medium text-white/60">
@@ -231,13 +233,13 @@ function Parcours() {
 
                                                     {(element.mention || element.niveau) && (
                                                         <p className="mt-2 text-sm font-semibold text-brand">
-                                                            {element.mention || element.niveau}
+                                                            {t(element.mention || element.niveau)}
                                                         </p>
                                                     )}
 
                                                     {element.details && (
                                                         <p className="mt-4 text-sm leading-7 text-white/70">
-                                                            {element.details}
+                                                            {t(element.details)}
                                                         </p>
                                                     )}
 

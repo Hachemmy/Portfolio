@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
 import SectionAnimee from './SectionAnimee';
+import { useLangue } from '../context/ContexteLangue';
 
 function Signature() {
+    const { t } = useLangue();
     return (
         <SectionAnimee
             id="signature"
@@ -36,11 +38,11 @@ function Signature() {
                     transition={{ duration: 0.7, ease: 'easeOut' }}
                 >
                     <p className="text-sm font-semibold uppercase tracking-[0.3em] text-brand">
-                        Signature
+                        {t('Signature')}
                     </p>
 
                     <h2 className="mt-4 text-4xl font-bold leading-[1.05] tracking-[-0.04em] text-white sm:text-5xl lg:text-[56px]">
-                        Le Professionalisme est le <span className="text-brand">meilleur chemin</span>
+                        {t('Le Professionalisme est le')} <span className="text-brand">{t('meilleur chemin')}</span>
                     </h2>
 
                 </motion.div>

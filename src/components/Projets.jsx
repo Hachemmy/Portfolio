@@ -4,6 +4,7 @@ import { FaArrowRight, FaGithub } from 'react-icons/fa';
 import { projets } from '../data/donneesPortfolio';
 import SectionAnimee from './SectionAnimee';
 import TitreSection from './TitreSection';
+import { useLangue } from '../context/ContexteLangue';
 
 const categoriesProjets = [
     { valeur: 'developpement', etiquette: 'Développement' },
@@ -12,6 +13,7 @@ const categoriesProjets = [
 
 function Projets() {
     const [categorieActive, setCategorieActive] = useState('developpement');
+    const { t } = useLangue();
 
     const titresVedettes = ["Flem'art", 'Projet Service Réseaux', 'Routage IP'];
     const projetsVedettes = titresVedettes
@@ -32,9 +34,9 @@ function Projets() {
                 {/* ——— Bandeau "Top collections" : grille des projets ——— */}
                 <div className="flex flex-col items-center justify-between gap-6 sm:flex-row sm:items-end">
                     <TitreSection
-                        etiquette="Projets"
-                        titre="Mes réalisations, techniques et visuellement raffinées"
-                        description="Chaque projet reflète une approche soignée du détail, du responsive et de l’expérience utilisateur."
+                        etiquette={t('Projets')}
+                        titre={t('Mes réalisations, techniques et visuellement raffinées')}
+                        description={t('Chaque projet reflète une approche soignée du détail, du responsive et de l’expérience utilisateur.')}
                     />
                 </div>
 
@@ -59,7 +61,7 @@ function Projets() {
                                             transition={{ type: 'spring', stiffness: 300, damping: 28 }}
                                         />
                                     )}
-                                    {categorie.etiquette}
+                                    {t(categorie.etiquette)}
                                 </button>
                             ))}
                         </div>
@@ -68,9 +70,9 @@ function Projets() {
                     {/* Bandeau "Mes plus grands projets" : les trois dans le detail */}
                 <div className="mt-16">
                     <TitreSection
-                        etiquette="Sélection"
-                        titre="Mes plus grands projets"
-                        description="Trois projets dans le détail"
+                        etiquette={t('Sélection')}
+                        titre={t('Mes plus grands projets')}
+                        description={t('Trois projets dans le détail')}
                     />
 
                     <div className="mt-16 grid gap-8 lg:grid-cols-3">
@@ -92,12 +94,12 @@ function Projets() {
 
                                 <div className="p-5 pb-3">
                                     <h3 className="text-2xl font-bold tracking-[-0.04em] text-white">
-                                        {projet.titre}
+                                        {t(projet.titre)}
                                     </h3>
                                 </div>
 
                                 <p className="px-5 pb-5 text-sm leading-6 text-white/60">
-                                    {projet.description}
+                                    {t(projet.description)}
                                 </p>
 
                                 {!projet.descriptionAuLieuGithub && (
@@ -116,7 +118,7 @@ function Projets() {
                                             rel="noreferrer"
                                             className="inline-flex flex-1 items-center justify-center gap-2 rounded-[60px] border border-brand/40 bg-brand/10 px-6 py-4 text-sm font-medium text-brand transition hover:border-brand/70 hover:bg-brand/20"
                                         >
-                                            <FaArrowRight /> {projet.telecharger ? 'Télécharger' : 'Voir la démo'}
+                                            <FaArrowRight /> {projet.telecharger ? t('Télécharger') : t('Voir la démo')}
                                         </a>
                                     </div>
                                 )}
@@ -128,7 +130,7 @@ function Projets() {
                 <div className="mt-20 mb-8 flex items-center gap-4">
                     <span className="h-px flex-1 bg-white/10" />
                     <h2 className="shrink-0 px-2 text-sm font-semibold uppercase tracking-[0.3em] text-white/70">
-                        Mes autres projets
+                        {t('Mes autres projets')}
                     </h2>
                     <span className="h-px flex-1 bg-white/10" />
                 </div>
@@ -166,17 +168,17 @@ function Projets() {
 
                             <div className="p-5">
                                 <h3 className="text-lg font-bold leading-tight tracking-[-0.02em] text-white">
-                                    {projet.titre}
+                                    {t(projet.titre)}
                                 </h3>
                                 {!projet.descriptionAuLieuGithub && (
                                     <p className="mt-2 line-clamp-2 text-sm leading-6 text-white/60">
-                                        {projet.description}
+                                        {t(projet.description)}
                                     </p>
                                 )}
 
                                 {projet.descriptionAuLieuGithub ? (
                                     <p className="mt-4 text-sm leading-6 text-white/70">
-                                        {projet.description}
+                                        {t(projet.description)}
                                     </p>
                                 ) : (
                                     <div className="mt-4 flex items-center gap-2">
@@ -196,7 +198,7 @@ function Projets() {
                                                 className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-brand/40 bg-brand/10 px-3 py-2 text-xs font-medium text-brand transition hover:border-brand/70 hover:bg-brand/20"
                                             >
                                                 <FaArrowRight className="text-sm" />
-                                                {projet.telecharger ? 'Télécharger' : 'Voir la démo'}
+                                                {projet.telecharger ? t('Télécharger') : t('Voir la démo')}
                                             </a>
                                         )}
                                     </div>
@@ -213,7 +215,7 @@ function Projets() {
                         rel="noreferrer"
                         className="inline-flex items-center gap-2 rounded-full border border-brand/40 bg-brand/10 px-8 py-4 text-base font-medium text-brand transition hover:border-brand/70 hover:bg-brand/20"
                     >
-                        <FaGithub /> Tous mes dépôts
+                        <FaGithub /> {t('Tous mes dépôts')}
                     </a>
                 </div>
 

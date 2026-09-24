@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import Application from './Application';
 import reportWebVitals from './reportWebVitals';
+import { FournisseurLangue } from './context/ContexteLangue';
 
 const racine = ReactDOM.createRoot(document.getElementById('root'));
 racine.render(
   <React.StrictMode>
-    <Application />
+    <FournisseurLangue>
+      <Application />
+    </FournisseurLangue>
   </React.StrictMode>
 );
 

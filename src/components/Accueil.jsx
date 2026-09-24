@@ -2,8 +2,10 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaArrowRight, FaEnvelope, FaFacebook, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { personalInfo, detailsContact } from '../data/donneesPortfolio';
+import { useLangue } from '../context/ContexteLangue';
 
 function Accueil() {
+    const { t } = useLangue();
     const emailContact = detailsContact.find((d) => d.etiquette === 'Email')?.href || 'mailto:hachejoven@gmail.com';
 
     const reseauxSociaux = [
@@ -47,7 +49,7 @@ function Accueil() {
                         variants={elementVariants}
                         className="text-sm font-semibold uppercase tracking-[0.3em] text-brand"
                     >
-                        Bonjour, je suis
+                        {t('Bonjour, je suis')}
                     </motion.p>
 
                     <motion.h1
@@ -67,14 +69,14 @@ function Accueil() {
                         variants={elementVariants}
                         className="font-aladin mt-10 text-2xl font-normal leading-10 tracking-[0.05em] text-brand sm:text-3xl"
                     >
-                        {personalInfo.titre}
+                        {t(personalInfo.titre)}
                     </motion.p>
 
                     <motion.p
                         variants={elementVariants}
                         className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/70"
                     >
-                        {personalInfo.aPropos}
+                        {t(personalInfo.aPropos)}
                     </motion.p>
 
                     <motion.div
@@ -85,14 +87,14 @@ function Accueil() {
                             to="/projets"
                             className="inline-flex items-center gap-2 rounded-full border border-brand/40 bg-brand/10 px-8 py-4 text-base font-medium text-brand transition hover:-translate-y-1 hover:border-brand/70 hover:bg-brand/20 sm:px-10 sm:py-5 sm:text-lg"
                         >
-                            Voir mes projets <FaArrowRight />
+                            {t('Voir mes projets')} <FaArrowRight />
                         </Link>
 
                         <Link
                             to="/contact"
                             className="inline-flex items-center gap-2 rounded-full border border-white bg-white px-8 py-4 text-base font-medium text-black transition hover:-translate-y-1 hover:border-white/80 hover:bg-white/90 sm:px-10 sm:py-5 sm:text-lg"
                         >
-                            Me contacter
+                            {t('Me contacter')}
                         </Link>
                     </motion.div>
 
