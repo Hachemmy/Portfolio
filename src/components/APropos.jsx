@@ -7,7 +7,7 @@ import TitreSection from './TitreSection';
 import { useLangue } from '../context/ContexteLangue';
 
 function numeleroComplet(index) {
-    return String(index + 1).padStart(3, '0');
+    return (index + 1).toString(2).padStart(3, '0');
 }
 
 function APropos() {
